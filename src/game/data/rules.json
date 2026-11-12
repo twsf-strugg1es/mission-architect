@@ -50,6 +50,8 @@
   "dustStormSolarFactor": 0.3,
   "launchRiskScale": 10,
   "eventPosition": [0.3, 0.75],
+  "warnings": { "radiationLevel": 0.7, "protection": 6, "powerMarginPct": 10 },
+  "debrief": { "marginExcess": 0.4, "scienceHigh": 0.9 },
   "scoring": {
     "science": 40,
     "safety": 25,

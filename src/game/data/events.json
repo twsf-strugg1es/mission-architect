@@ -251,7 +251,7 @@
       "text": { "en": "During descent, the camera shows boulders where the map showed flat ground.", "bn": "নামার সময় ক্যামেরায় দেখা যাচ্ছে, মানচিত্রে যেখানে সমতল ছিল সেখানে বড় বড় পাথর।" },
       "condition": { "legs": ["arrival"], "landing": true },
       "weight": 1.2,
-      "check": { "stat": "fuelPct", "atLeast": 12 },
+      "check": { "stat": "fuelReservePct", "atLeast": 12 },
       "checkLabel": { "en": "A fuel reserve of 12% or more", "bn": "জ্বালানির মজুত ১২% বা তার বেশি" },
       "debriefPrepared": { "en": "Your fuel reserve let you fly past the boulders, much as Apollo 11 did.", "bn": "জ্বালানির মজুত থাকায় পাথরগুলো পেরিয়ে নামা গেছে, অনেকটা অ্যাপোলো ১১-এর মতো।" },
       "debriefUnprepared": { "en": "A thin fuel reserve left no room to steer around the hazard.", "bn": "জ্বালানির মজুত কম থাকায় বিপদ এড়িয়ে যাওয়ার সুযোগ ছিল না।" },

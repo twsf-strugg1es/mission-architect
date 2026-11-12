@@ -96,7 +96,7 @@ export type Effect = {
   timeDeltaDays: number
 }
 
-export type CheckStat = 'protection' | 'crewSupport' | 'fuelPct' | 'stormMarginKw'
+export type CheckStat = 'protection' | 'crewSupport' | 'fuelReservePct' | 'stormMarginKw'
 export type EventCheck = { stat: CheckStat; atLeast: number } | { anyModule: string[] }
 
 export type Choice = {
@@ -174,6 +174,8 @@ export type Rules = {
   dustStormSolarFactor: number
   launchRiskScale: number
   eventPosition: number[]
+  warnings: { radiationLevel: number; protection: number; powerMarginPct: number }
+  debrief: { marginExcess: number; scienceHigh: number }
   scoring: {
     science: number
     safety: number
