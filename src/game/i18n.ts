@@ -172,7 +172,9 @@ const en = {
 
   'sim.title': 'Mission in flight',
   'sim.day': 'Day {d}',
-  'sim.fuel': 'Fuel (delta-v reserve)',
+  'sim.fuel': 'Fuel (delta-v budget)',
+  'sim.spare': 'Spare fuel',
+  'sim.noSpare': 'Not enough fuel to finish the mission',
   'sim.safety': 'Safety',
   'sim.science': 'Science',
   'sim.budget': 'Budget left',
@@ -461,7 +463,9 @@ const bn: Dict = {
 
   'sim.title': 'মিশন চলছে',
   'sim.day': 'দিন {d}',
-  'sim.fuel': 'জ্বালানি (ডেল্টা-ভি মজুত)',
+  'sim.fuel': 'জ্বালানি (ডেল্টা-ভি বাজেট)',
+  'sim.spare': 'বাড়তি জ্বালানি',
+  'sim.noSpare': 'মিশন শেষ করার মতো জ্বালানি নেই',
   'sim.safety': 'নিরাপত্তা',
   'sim.science': 'বিজ্ঞান',
   'sim.budget': 'অবশিষ্ট বাজেট',

@@ -37,7 +37,7 @@ export function EventCard({ event, ctx, state, resolved, onChoose, onContinue }:
 
         <p className="flex flex-wrap gap-x-5 text-xs text-ink-3">
           <span>
-            {t('sim.fuel')}: <span className="font-mono">{t('unit.pct', { n: n(Math.max(0, reservePct(ctx, state)), 1) })}</span>
+            {t('sim.spare')}: <span className="font-mono">{t('unit.pct', { n: n(Math.max(0, reservePct(ctx, state)), 1) })}</span>
           </span>
           <span>
             {t('sim.safety')}: <span className="font-mono">{t('unit.pct', { n: n(Math.max(0, state.safety)) })}</span>

@@ -25,7 +25,7 @@ const freshBuild = (): Build => ({
 /** ?seed=N in the URL pins the event RNG, so a playthrough can be replayed exactly. */
 /** Screens that only need the build (which has defaults) can be opened from the URL hash, e.g. #builder. */
 const LINKABLE: Screen[] = ['destination', 'vehicle', 'builder', 'launchWindow']
-const screenFromHash = (): Screen => {
+export const screenFromHash = (): Screen => {
   const hash = window.location.hash.slice(1) as Screen
   return LINKABLE.includes(hash) ? hash : 'home'
 }

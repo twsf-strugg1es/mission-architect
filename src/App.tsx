@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { LanguageToggle } from '@/components/LanguageToggle'
 import { StepIndicator } from '@/components/StepIndicator'
-import { useGame } from '@/game/store/useGame'
+import { screenFromHash, useGame } from '@/game/store/useGame'
 import { useI18n } from '@/game/useI18n'
 import { BuilderScreen } from '@/screens/BuilderScreen'
 import { DestinationScreen } from '@/screens/DestinationScreen'
@@ -32,6 +32,17 @@ function App() {
     document.documentElement.lang = locale
     document.title = t('app.title')
   }, [locale, t])
+
+  // A hash typed or navigated to in an open tab (or back/forward) opens that screen.
+  useEffect(() => {
+    const onHash = () => {
+      const { screen: current, go } = useGame.getState()
+      const next = screenFromHash()
+      if (next !== current) go(next)
+    }
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
 
   // New screen: mirror it in the URL hash, start at the top, and move focus to its heading for screen-reader users.
   useEffect(() => {

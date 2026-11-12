@@ -186,7 +186,7 @@ export function SimulationScreen() {
             max={100}
             valueText={t('unit.pct', { n: n(Math.max(0, mission.fuelPct), 1) })}
             status={reserve < 0 ? 'bad' : reserve < fb.reserveWarnPct ? 'warn' : 'ok'}
-            statusText={`${t('fuel.title')}: ${t('status.margin', { x: t('unit.pct', { n: n(reserve, 1) }) })}`}
+            statusText={reserve < 0 ? t('sim.noSpare') : `${t('sim.spare')}: ${t('unit.pct', { n: n(reserve, 1) })}`}
           />
           <BudgetBar
             label={t('sim.safety')}
