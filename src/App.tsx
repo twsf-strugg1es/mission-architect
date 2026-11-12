@@ -33,17 +33,19 @@ function App() {
     document.title = t('app.title')
   }, [locale, t])
 
-  // New screen: start at the top and move focus to its heading for screen-reader users.
+  // New screen: mirror it in the URL hash, start at the top, and move focus to its heading for screen-reader users.
   useEffect(() => {
+    const { pathname, search } = window.location
+    window.history.replaceState(null, '', screen === 'home' ? pathname + search : `${pathname}${search}#${screen}`)
     window.scrollTo(0, 0)
     document.getElementById('screen-title')?.focus({ preventScroll: true })
   }, [screen])
 
   return (
-    <div className="starfield flex min-h-svh flex-col">
-      <header className="border-b border-border/60 bg-background/40 backdrop-blur">
+    <div className="flex min-h-svh flex-col">
+      <header className="border-b border-rule bg-paper-3">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-          <p className="font-semibold tracking-tight">{t('app.title')}</p>
+          <p className="font-medium">{t('app.title')}</p>
           <LanguageToggle />
         </div>
         {screen !== 'home' && <StepIndicator current={screen} />}

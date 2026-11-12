@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CircleX, Lightbulb, Minus, Plus, TriangleAlert } from 'lucide-react'
+import { CircleCheck, CircleX, Lightbulb, Minus, Plus, TriangleAlert } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { BuildBars } from '@/components/BuildBars'
 import { FuelControl } from '@/components/FuelControl'
@@ -12,6 +12,7 @@ import type { DictKey } from '@/game/i18n'
 import { useGame } from '@/game/store/useGame'
 import { useI18n } from '@/game/useI18n'
 import type { Module, ModuleCategory } from '@/game/types'
+import { cn } from '@/lib/utils'
 
 const CATEGORIES: ModuleCategory[] = ['command', 'landing', 'power', 'science', 'comms', 'protection', 'surface']
 
@@ -34,18 +35,20 @@ function ModuleRow({ m }: { m: Module }) {
   if (m.crew) stats.push(['mod.crew', n(m.crew)])
 
   return (
-    <li className={`flex flex-col gap-2 rounded-xl border p-4 ${c > 0 ? 'border-signal bg-signal-soft' : 'border-border bg-card/80'}`}>
+    <li className={cn('flex min-w-0 flex-col gap-2 border p-4', c > 0 ? 'border-signal bg-signal-soft' : 'border-rule bg-paper-2')}>
       <div className="flex items-start justify-between gap-3">
-        <h3 className="font-semibold">{name}</h3>
+        <h3 className="font-medium">{name}</h3>
         <div className="flex shrink-0 items-center gap-1.5">
-          <Button size="icon-sm" variant="outline" aria-label={t('build.remove', { name })} disabled={c === 0} onClick={() => removeModule(m.id)}>
+          <Button size="icon" variant="outline" className="relative after:absolute after:-inset-1.5" aria-label={t('build.remove', { name })} disabled={c === 0} onClick={() => removeModule(m.id)}>
             <Minus aria-hidden />
           </Button>
-          <span className="w-5 text-center font-semibold tabular-nums" aria-label={t('build.inBuild', { n: c })}>
+          <span className="w-6 text-center font-mono tabular-nums" aria-label={t('build.inBuild', { n: c })}>
             {n(c)}
           </span>
           <Button
-            size="icon-sm"
+            size="icon"
+            variant="outline"
+            className="relative after:absolute after:-inset-1.5"
             aria-label={c >= m.maxCount ? `${t('build.add', { name })}: ${t('build.max')}` : t('build.add', { name })}
             disabled={c >= m.maxCount}
             onClick={() => addModule(m.id)}
@@ -54,16 +57,16 @@ function ModuleRow({ m }: { m: Module }) {
           </Button>
         </div>
       </div>
-      <p className="text-sm text-muted-foreground">{tx(m.blurb)}</p>
+      <p className="text-sm text-ink-2">{tx(m.blurb)}</p>
       <dl className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
         {stats.map(([label, value]) => (
-          <div key={label} className="flex gap-1">
-            <dt className="text-muted-foreground">{t(label)}</dt>
-            <dd className="font-semibold tabular-nums">{value}</dd>
+          <div key={label} className="flex items-baseline gap-1.5">
+            <dt className="text-ink-3">{t(label)}</dt>
+            <dd className="font-mono tabular-nums">{value}</dd>
           </div>
         ))}
       </dl>
-      <p className="text-xs text-muted-foreground">{tx(m.requiresPowerNote)}</p>
+      <p className="text-xs text-ink-3">{tx(m.requiresPowerNote)}</p>
     </li>
   )
 }
@@ -77,6 +80,12 @@ export function BuilderScreen() {
   const { problems, warnings, totals, engine } = report
   const hintMode = report.difficulty.hints
   const showHint = hintMode === 'on' || (hintMode === 'onDemand' && hintAsked)
+  const capabilities: [DictKey, number][] = [
+    ['mod.science', totals.scienceTotal],
+    ['mod.protection', totals.protectionTotal],
+    ['mod.crewSupport', totals.crewSupportTotal],
+    ['mod.comms', totals.comms],
+  ]
 
   return (
     <ScreenFrame
@@ -89,47 +98,24 @@ export function BuilderScreen() {
       nextHint={t('problems.title')}
     >
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
-        <aside aria-labelledby="summary" className="space-y-5 rounded-xl border border-border bg-card/90 p-4 lg:sticky lg:top-4 lg:order-last">
-          <h2 id="summary" className="text-lg font-semibold">
+        <aside
+          aria-labelledby="summary"
+          className="space-y-5 border border-rule bg-paper-2 p-4 lg:sticky lg:top-4 lg:order-last lg:max-h-[calc(100svh-2rem)] lg:overflow-y-auto"
+        >
+          <h2 id="summary" className="text-lg font-medium">
             {t('summary.title')}
           </h2>
-          <BuildBars report={report} />
+          <BuildBars report={report} large />
 
-          <dl className="grid grid-cols-4 gap-2 border-t border-border pt-4 text-center">
-            {(
-              [
-                ['mod.science', totals.scienceTotal],
-                ['mod.protection', totals.protectionTotal],
-                ['mod.crewSupport', totals.crewSupportTotal],
-                ['mod.comms', totals.comms],
-              ] as [DictKey, number][]
-            ).map(([label, value]) => (
-              <div key={label}>
-                <dd className="text-2xl font-semibold tabular-nums">{n(value)}</dd>
-                <dt className="text-xs text-muted-foreground">{t(label)}</dt>
-              </div>
-            ))}
-          </dl>
-
-          <div className="space-y-1 rounded-lg bg-muted/60 p-3">
-            <h3 className="text-sm font-semibold">{t('eq.title')}</h3>
-            <p className="font-mono text-sm">Δv = Isp × g₀ × ln(m₀ / m_f)</p>
-            <p className="font-mono text-sm tabular-nums">
-              = {n(engine.ispSeconds)} × {n(G0, 2)} × ln({n(totals.totalMass, 1)} / {n(totals.dryMass, 1)}) = {t('unit.kms', { n: n(report.deltaV, 2) })}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              {t('eq.values', { m0: n(totals.totalMass, 1), mf: n(totals.dryMass, 1), isp: n(engine.ispSeconds), g0: n(G0, 2) })}
-            </p>
-          </div>
-
-          <FuelControl report={report} />
-
-          <div className="space-y-2 border-t border-border pt-4" aria-live="polite">
+          <div className="space-y-2 border-t border-rule pt-4" aria-live="polite">
             {problems.length === 0 ? (
-              <p className="text-sm font-medium text-ok">{t('problems.none')}</p>
+              <p className="flex items-center gap-2 text-sm text-ok">
+                <CircleCheck className="size-4 shrink-0" aria-hidden />
+                {t('problems.none')}
+              </p>
             ) : (
               <>
-                <h3 className="text-sm font-semibold text-bad">{t('problems.title')}</h3>
+                <h3 className="text-sm font-medium text-bad">{t('problems.title')}</h3>
                 <ul className="space-y-1.5 text-sm">
                   {problems.map((p) => (
                     <li key={p.code} className="flex gap-2">
@@ -142,7 +128,7 @@ export function BuilderScreen() {
             )}
             {warnings.length > 0 && (
               <>
-                <h3 className="pt-2 text-sm font-semibold text-warn">{t('warnings.title')}</h3>
+                <h3 className="pt-2 text-sm font-medium text-warn">{t('warnings.title')}</h3>
                 <ul className="space-y-1.5 text-sm">
                   {warnings.map((w) => (
                     <li key={w.code} className="flex gap-2">
@@ -160,22 +146,48 @@ export function BuilderScreen() {
               </Button>
             )}
             {showHint && (
-              <p className="flex gap-2 rounded-lg border border-signal/40 bg-signal-soft p-3 text-sm">
-                <Lightbulb className="mt-0.5 size-4 shrink-0 text-signal" aria-hidden />
+              <p className="flex gap-2 border-l-2 border-rule py-1 pl-3 text-sm">
+                <Lightbulb className="mt-0.5 size-4 shrink-0 text-ink-3" aria-hidden />
                 <span>
-                  <span className="font-semibold">{t('hint.title')}: </span>
+                  <span className="font-medium">{t('hint.title')}: </span>
                   {t(problems[0] ? hintKey(problems[0]) : 'hint.ready')}
                 </span>
               </p>
             )}
           </div>
+
+          <div className="border-t border-rule pt-4">
+            <FuelControl report={report} />
+          </div>
+
+          <dl className="grid grid-cols-4 gap-2 border-t border-rule pt-4">
+            {capabilities.map(([label, value]) => (
+              <div key={label} className="flex min-w-0 flex-col-reverse justify-end">
+                <dt className="text-xs text-ink-3">{t(label)}</dt>
+                <dd className="font-mono text-3xl tabular-nums">{n(value)}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <section aria-labelledby="equation" className="space-y-1 border-t border-rule pt-4">
+            <h3 id="equation" className="text-sm font-medium">
+              {t('eq.title')}
+            </h3>
+            <p className="font-mono text-sm">Δv = Isp × g₀ × ln(m₀ / m_f)</p>
+            <p className="font-mono text-sm tabular-nums">
+              = {n(engine.ispSeconds)} × {n(G0, 2)} × ln({n(totals.totalMass, 1)} / {n(totals.dryMass, 1)}) = {t('unit.kms', { n: n(report.deltaV, 2) })}
+            </p>
+            <p className="text-xs text-ink-3">
+              {t('eq.values', { m0: n(totals.totalMass, 1), mf: n(totals.dryMass, 1), isp: n(engine.ispSeconds), g0: n(G0, 2) })}
+            </p>
+          </section>
         </aside>
 
-        <div className="space-y-6">
+        <div className="min-w-0 space-y-6">
           <h2 className="sr-only">{t('build.catalogue')}</h2>
           {CATEGORIES.map((c) => (
-            <section key={c} aria-labelledby={`cat-${c}`} className="space-y-2">
-              <h3 id={`cat-${c}`} className="text-sm font-semibold tracking-wide text-muted-foreground">
+            <section key={c} aria-labelledby={`cat-${c}`} className="space-y-3 border-t border-rule pt-3">
+              <h3 id={`cat-${c}`} className="text-sm font-medium text-ink-3">
                 {t(`cat.${c}`)}
               </h3>
               <ul className="grid gap-3 md:grid-cols-2">

@@ -68,17 +68,17 @@ export function ResultsScreen() {
 
   return (
     <section aria-labelledby="screen-title" className="mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:py-8">
-      <h1 id="screen-title" className="text-2xl font-semibold tracking-tight sm:text-3xl">
+      <h1 id="screen-title" tabIndex={-1} className="max-w-none text-2xl font-medium outline-none sm:text-3xl">
         {t('res.title')}: {tx(ctx.destination.name)}
       </h1>
 
       <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
-        <div className="space-y-4 rounded-xl border border-border bg-card/80 p-5 text-center">
-          <p className="text-sm text-muted-foreground">{t('res.grade')}</p>
-          <p className={cn('text-8xl leading-none font-bold', result.grade === 'Fail' ? 'text-bad' : 'text-signal')} data-testid="grade">
+        <div className="space-y-4 border border-rule bg-paper-2 p-5 text-center">
+          <p className="text-sm text-ink-3">{t('res.grade')}</p>
+          <p className={cn('text-8xl leading-none font-medium', result.grade === 'Fail' ? 'text-bad' : 'text-signal')} data-testid="grade">
             {result.grade}
           </p>
-          <p className="text-2xl font-semibold tabular-nums">
+          <p className="text-2xl tabular-nums">
             {t('res.score')}: {t('res.scoreValue', { score: n(result.score) })}
           </p>
           {newBest && (
@@ -90,8 +90,8 @@ export function ResultsScreen() {
           {failure && <p className="font-medium text-bad">{t('res.failed', { reason: failure })}</p>}
         </div>
 
-        <div className="space-y-4 rounded-xl border border-border bg-card/80 p-5">
-          <h2 className="font-semibold">{t('res.breakdown')}</h2>
+        <div className="space-y-4 border border-rule bg-paper-2 p-5">
+          <h2 className="font-medium">{t('res.breakdown')}</h2>
           {result.parts.map((p) => {
             const ratio = p.max ? p.points / p.max : 0
             return (
@@ -109,8 +109,8 @@ export function ResultsScreen() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-border bg-card/80 p-5">
-        <h2 className="mb-3 font-semibold">{t('res.debrief')}</h2>
+      <div className=" border border-rule bg-paper-2 p-5">
+        <h2 className="mb-3 font-medium">{t('res.debrief')}</h2>
         <ul className="space-y-2.5">
           {debrief.map((d, k) => {
             const { Icon, className } = TONE[d.tone]
@@ -147,15 +147,15 @@ export function ResultsScreen() {
         </p>
       </div>
       {copy === 'failed' && (
-        <textarea readOnly value={summary} rows={5} className="w-full rounded-lg border border-border bg-card p-3 font-mono text-sm" aria-label={t('res.copy')} />
+        <textarea readOnly value={summary} rows={5} className="w-full border border-rule bg-card p-3 font-mono text-sm" aria-label={t('res.copy')} />
       )}
 
-      <details className="rounded-xl border border-border bg-card/80 p-5">
-        <summary className="cursor-pointer font-semibold">{t('res.log')}</summary>
+      <details className=" border border-rule bg-paper-2 p-5">
+        <summary className="cursor-pointer font-medium">{t('res.log')}</summary>
         <ol className="mt-3 space-y-1.5 text-sm">
           {mission.log.map((e, k) => (
             <li key={k} className="flex gap-2">
-              <span className="w-16 shrink-0 text-xs text-muted-foreground tabular-nums">{t('sim.day', { d: n(Math.floor(e.day)) })}</span>
+              <span className="w-16 shrink-0 text-xs text-ink-3 tabular-nums">{t('sim.day', { d: n(Math.floor(e.day)) })}</span>
               <span>{logText(e, ctx, i18n)}</span>
             </li>
           ))}

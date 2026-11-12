@@ -32,30 +32,36 @@ export function EventCard({ event, ctx, state, resolved, onChoose, onContinue }:
       <DialogContent showCloseButton={false} onEscapeKeyDown={(e) => e.preventDefault()} onInteractOutside={(e) => e.preventDefault()} className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-xl">{tx(event.title)}</DialogTitle>
-          <DialogDescription className="text-base text-foreground/90">{tx(event.text)}</DialogDescription>
+          <DialogDescription className="text-base text-ink-2">{tx(event.text)}</DialogDescription>
         </DialogHeader>
 
-        <p className="text-xs text-muted-foreground tabular-nums">
-          {t('sim.fuel')}: {t('unit.pct', { n: n(Math.max(0, reservePct(ctx, state)), 1) })} · {t('sim.safety')}: {t('unit.pct', { n: n(Math.max(0, state.safety)) })}
+        <p className="flex flex-wrap gap-x-5 text-xs text-ink-3">
+          <span>
+            {t('sim.fuel')}: <span className="font-mono">{t('unit.pct', { n: n(Math.max(0, reservePct(ctx, state)), 1) })}</span>
+          </span>
+          <span>
+            {t('sim.safety')}: <span className="font-mono">{t('unit.pct', { n: n(Math.max(0, state.safety)) })}</span>
+          </span>
         </p>
 
         {event.check && event.checkLabel && (
-          <div className="rounded-lg border border-border p-3 text-sm">
-            <p className="flex items-center gap-1.5 font-semibold">
-              <ShieldQuestion className="size-4 text-signal" aria-hidden />
+          <div className="border-t border-rule pt-3 text-sm">
+            <p className="flex items-center gap-1.5 font-medium">
+              <ShieldQuestion className="size-4 text-ink-3" aria-hidden />
               {t('sim.whatMatters')}
             </p>
             <p>{tx(event.checkLabel)}</p>
-            <p className={`mt-1 flex items-center gap-1.5 font-medium ${check.passed ? 'text-ok' : 'text-bad'}`}>
+            <p className={`mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 font-medium ${check.passed ? 'text-ok' : 'text-bad'}`}>
               {check.passed ? <CircleCheck className="size-4" aria-hidden /> : <CircleX className="size-4" aria-hidden />}
-              {checkValue} · {t(check.passed ? 'sim.prepared' : 'sim.unprepared')}
+              <span>{checkValue}</span>
+              <span>{t(check.passed ? 'sim.prepared' : 'sim.unprepared')}</span>
             </p>
           </div>
         )}
 
         {!resolved || !chosen ? (
           <div className="space-y-2">
-            <p className="text-sm font-semibold">{t('sim.choose')}</p>
+            <p className="text-sm font-medium">{t('sim.choose')}</p>
             <div className="grid gap-2">
               {event.choices.map((c) => (
                 <Button key={c.id} variant="outline" size="lg" className="h-auto justify-start py-3 text-left whitespace-normal" onClick={() => onChoose(c.id)}>
@@ -66,11 +72,11 @@ export function EventCard({ event, ctx, state, resolved, onChoose, onContinue }:
           </div>
         ) : (
           <div className="space-y-3" aria-live="polite">
-            <p className="text-sm font-semibold">{t('sim.outcome')}</p>
+            <p className="text-sm font-medium">{t('sim.outcome')}</p>
             <p>{tx(resolved.prepared && chosen.preparedOutcome ? chosen.preparedOutcome : chosen.outcome)}</p>
             <ul className="flex flex-wrap gap-2">
               {effectParts(resolved.effect, i).map((p) => (
-                <li key={p} className="rounded-md bg-muted px-2 py-1 text-xs font-semibold tabular-nums">
+                <li key={p} className="bg-paper-3 px-2 py-1 font-mono text-xs tabular-nums">
                   {p}
                 </li>
               ))}

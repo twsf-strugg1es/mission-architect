@@ -1,0 +1,32 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "restyle",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "rim",
+  "axes": "dark/grotesk-sans/cool",
+  "hero": "none (app screen)",
+  "nav": "kept: top bar, step strip, language switch",
+  "footer": "kept",
+  "imagery": "diagrams only (trajectory, transfer orbits)",
+  "photos": [],
+  "entry": "src/index.css",
+  "fingerprint": "rim-station-budget-sheet",
+  "sections": [
+   "home",
+   "destination",
+   "vehicle",
+   "builder",
+   "launchWindow",
+   "simulation",
+   "results"
+  ],
+  "signature": "spacecraft budget sheet: four live bars over the rocket equation",
+  "waived": [
+   "39b"
+  ],
+  "prompt": "space mission design game: build a spacecraft against mass, cost, power and delta-v budgets",
+  "date": "2026-11-12"
+ }
+]

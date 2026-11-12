@@ -23,6 +23,13 @@ const freshBuild = (): Build => ({
 })
 
 /** ?seed=N in the URL pins the event RNG, so a playthrough can be replayed exactly. */
+/** Screens that only need the build (which has defaults) can be opened from the URL hash, e.g. #builder. */
+const LINKABLE: Screen[] = ['destination', 'vehicle', 'builder', 'launchWindow']
+const screenFromHash = (): Screen => {
+  const hash = window.location.hash.slice(1) as Screen
+  return LINKABLE.includes(hash) ? hash : 'home'
+}
+
 const newSeed = () => {
   const pinned = Number(new URLSearchParams(window.location.search).get('seed'))
   return Number.isInteger(pinned) && pinned > 0 ? pinned : Math.floor(Math.random() * 2 ** 31)
@@ -61,7 +68,7 @@ export const useGame = create<GameState>()(
       locale: 'en',
       difficultyId: 'cadet',
       best: null,
-      screen: 'home',
+      screen: screenFromHash(),
       overlay: null,
       build: freshBuild(),
       windowId: 'standard',

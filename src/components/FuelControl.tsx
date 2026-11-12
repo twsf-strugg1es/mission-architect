@@ -19,7 +19,9 @@ export function FuelControl({ report }: { report: BuildReport }) {
         <label id={id} className="text-sm font-medium">
           {t('fuel.label')}
         </label>
-        <span className="text-lg font-semibold tabular-nums">{t('unit.t', { n: n(propellant, 1) })}</span>
+        <span className="font-mono text-2xl tabular-nums">
+          {n(propellant, 1)} <span className="text-sm text-ink-3">{t('unit.t', { n: '' }).trim()}</span>
+        </span>
       </div>
       <Slider
         aria-labelledby={id}

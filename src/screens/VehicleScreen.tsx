@@ -16,8 +16,8 @@ function Stats({ items }: { items: [DictKey, string][] }) {
     <dl className="mt-auto grid grid-cols-3 gap-2 text-sm">
       {items.map(([label, value]) => (
         <div key={label}>
-          <dt className="text-xs text-muted-foreground">{t(label)}</dt>
-          <dd className="font-semibold tabular-nums">{value}</dd>
+          <dt className="text-xs text-ink-3">{t(label)}</dt>
+          <dd className="font-mono tabular-nums">{value}</dd>
         </div>
       ))}
     </dl>
@@ -39,17 +39,17 @@ export function VehicleScreen() {
     >
       <section aria-labelledby="vehicles" className="space-y-3">
         <div>
-          <h2 id="vehicles" className="text-lg font-semibold">
+          <h2 id="vehicles" className="text-lg font-medium">
             {t('veh.vehicles')}
           </h2>
-          <p className="text-sm text-muted-foreground">{t('veh.vehiclesIntro')}</p>
+          <p className="text-sm text-ink-3">{t('veh.vehiclesIntro')}</p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {VEHICLES.map((v) => (
             <ChoiceCard key={v.id} selected={build.vehicleId === v.id} onSelect={() => updateBuild({ vehicleId: v.id })} selectedLabel={t('common.selected')}>
-              <span className="pr-20 text-lg font-semibold">{v.name}</span>
+              <span className="pr-20 text-lg font-medium">{v.name}</span>
               {v.inDevelopment && <Badge variant="outline">{t('veh.inDev')}</Badge>}
-              <span className="text-sm text-muted-foreground">{tx(v.description)}</span>
+              <span className="text-sm text-ink-3">{tx(v.description)}</span>
               <Stats
                 items={[
                   ['veh.payload', t('unit.t', { n: n(v.payloadToLEOTonnes, 1) })],
@@ -64,16 +64,16 @@ export function VehicleScreen() {
 
       <section aria-labelledby="engines" className="space-y-3">
         <div>
-          <h2 id="engines" className="text-lg font-semibold">
+          <h2 id="engines" className="text-lg font-medium">
             {t('eng.title')}
           </h2>
-          <p className="max-w-3xl text-sm text-muted-foreground">{t('eng.intro')}</p>
+          <p className="max-w-3xl text-sm text-ink-3">{t('eng.intro')}</p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {ENGINES.map((e) => (
             <ChoiceCard key={e.id} selected={build.engineId === e.id} onSelect={() => updateBuild({ engineId: e.id })} selectedLabel={t('common.selected')}>
-              <span className="pr-20 text-lg font-semibold">{tx(e.name)}</span>
-              <span className="text-sm text-muted-foreground">{tx(e.description)}</span>
+              <span className="pr-20 text-lg font-medium">{tx(e.name)}</span>
+              <span className="text-sm text-ink-3">{tx(e.description)}</span>
               {e.restriction && (
                 <span className="flex gap-1.5 text-xs text-warn">
                   <TriangleAlert className="mt-0.5 size-3.5 shrink-0" aria-hidden />
@@ -92,9 +92,9 @@ export function VehicleScreen() {
         </div>
       </section>
 
-      <section aria-labelledby="fuel" className="grid gap-6 rounded-xl border border-border bg-card/80 p-4 md:grid-cols-2">
+      <section aria-labelledby="fuel" className="grid gap-6 border border-rule bg-paper-2 p-4 md:grid-cols-2">
         <div className="space-y-3">
-          <h2 id="fuel" className="text-lg font-semibold">
+          <h2 id="fuel" className="text-lg font-medium">
             {t('fuel.title')}
           </h2>
           <FuelControl report={report} />

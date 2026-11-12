@@ -21,12 +21,12 @@ function OrbitDiagram({ windowId, label }: { windowId: string; label: string }) 
   const arc = windowId === 'standard' ? `A ${(r1 + r2) / 2} ${Math.sqrt(r1 * r2) + 6} 0 0 1` : windowId === 'early' ? 'A 40 40 0 0 1' : 'A 42 38 0 1 1'
   return (
     <svg viewBox="0 0 140 120" role="img" aria-label={label} className="h-28 w-full">
-      <circle cx={cx} cy={cy} r={r1} fill="none" className="stroke-muted-foreground/40" strokeDasharray="2 3" />
-      <circle cx={cx} cy={cy} r={r2} fill="none" className="stroke-muted-foreground/40" strokeDasharray="2 3" />
-      <circle cx={cx} cy={cy} r={4} className="fill-warn" />
-      <path d={`M ${cx - r1} ${cy} ${arc} ${ex} ${ey}`} fill="none" className="stroke-signal" strokeWidth={2} />
-      <circle cx={cx - r1} cy={cy} r={4} className="fill-signal" />
-      <circle cx={ex} cy={ey} r={4} className="fill-foreground" />
+      <circle cx={cx} cy={cy} r={r1} fill="none" className="stroke-ink-4" strokeDasharray="2 3" />
+      <circle cx={cx} cy={cy} r={r2} fill="none" className="stroke-ink-4" strokeDasharray="2 3" />
+      <circle cx={cx} cy={cy} r={4} className="fill-ink-4" />
+      <path d={`M ${cx - r1} ${cy} ${arc} ${ex} ${ey}`} fill="none" className="stroke-ink-2" strokeWidth={2} />
+      <circle cx={cx - r1} cy={cy} r={4} className="fill-earth" />
+      <circle cx={ex} cy={ey} r={4} className="fill-ink" />
     </svg>
   )
 }
@@ -56,20 +56,20 @@ export function LaunchWindowScreen() {
           return (
             <ChoiceCard key={w.id} selected={w.id === windowId} onSelect={() => setWindow(w.id)} selectedLabel={t('common.selected')}>
               <OrbitDiagram windowId={w.id} label={t('win.diagram', { name: tx(w.name) })} />
-              <span className="text-xl font-semibold">{tx(w.name)}</span>
-              <span className="text-sm text-muted-foreground">{tx(w.description)}</span>
+              <span className="text-xl font-medium">{tx(w.name)}</span>
+              <span className="text-sm text-ink-3">{tx(w.description)}</span>
               <dl className="grid grid-cols-3 gap-2 text-sm">
                 <div>
-                  <dt className="text-xs text-muted-foreground">{t('win.travel')}</dt>
-                  <dd className="font-semibold tabular-nums">{t('unit.days', { n: n(days) })}</dd>
+                  <dt className="text-xs text-ink-3">{t('win.travel')}</dt>
+                  <dd className="font-mono tabular-nums">{t('unit.days', { n: n(days) })}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-muted-foreground">{t('win.need')}</dt>
-                  <dd className="font-semibold tabular-nums">{t('unit.kms', { n: n(r.requiredDeltaV, 2) })}</dd>
+                  <dt className="text-xs text-ink-3">{t('win.need')}</dt>
+                  <dd className="font-mono tabular-nums">{t('unit.kms', { n: n(r.requiredDeltaV, 2) })}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-muted-foreground">{t('win.yours')}</dt>
-                  <dd className="font-semibold tabular-nums">{t('unit.kms', { n: n(r.deltaV, 2) })}</dd>
+                  <dt className="text-xs text-ink-3">{t('win.yours')}</dt>
+                  <dd className="font-mono tabular-nums">{t('unit.kms', { n: n(r.deltaV, 2) })}</dd>
                 </div>
               </dl>
               <span className={`mt-auto flex items-center gap-1.5 text-sm font-medium ${ok ? 'text-ok' : 'text-bad'}`}>

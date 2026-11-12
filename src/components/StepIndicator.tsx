@@ -18,7 +18,7 @@ export function StepIndicator({ current }: { current: Screen }) {
   const index = FLOW.indexOf(current)
   return (
     <nav aria-label={t('step.progress', { n: index + 1, total: FLOW.length })} className="mx-auto max-w-6xl px-4 pb-3">
-      <p className="text-sm text-muted-foreground sm:hidden">
+      <p className="text-sm text-ink-3 sm:hidden">
         {t('step.progress', { n: index + 1, total: FLOW.length })}: <span className="text-foreground">{t(LABELS[current])}</span>
       </p>
       <ol className="hidden gap-1 sm:flex">
@@ -28,9 +28,9 @@ export function StepIndicator({ current }: { current: Screen }) {
             aria-current={s === current ? 'step' : undefined}
             className={cn(
               'flex-1 border-t-2 pt-1.5 text-xs',
-              i < index && 'border-signal/50 text-muted-foreground',
-              i === index && 'border-signal font-semibold text-foreground',
-              i > index && 'border-border text-muted-foreground',
+              i < index && 'border-signal/50 text-ink-3',
+              i === index && 'border-signal font-medium text-ink',
+              i > index && 'border-rule text-ink-3',
             )}
           >
             {t(LABELS[s])}

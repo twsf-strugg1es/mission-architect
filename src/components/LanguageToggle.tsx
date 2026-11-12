@@ -11,7 +11,7 @@ export function LanguageToggle() {
   const { locale, t } = useI18n()
   const setLocale = useGame((s) => s.setLocale)
   return (
-    <div role="group" aria-label={t('lang.label')} className="flex rounded-lg border border-border p-0.5">
+    <div role="group" aria-label={t('lang.label')} className="flex border border-rule p-0.5">
       {LANGS.map((l) => (
         <button
           key={l.id}
@@ -20,8 +20,8 @@ export function LanguageToggle() {
           aria-pressed={locale === l.id}
           onClick={() => setLocale(l.id)}
           className={cn(
-            'rounded-md px-3 py-1 text-sm font-medium focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-signal',
-            locale === l.id ? 'bg-signal text-background' : 'text-muted-foreground hover:text-foreground',
+            'relative min-h-8 px-3 text-sm transition-colors duration-(--dur-micro) after:absolute after:inset-x-0 after:-inset-y-1.5',
+            locale === l.id ? 'bg-signal text-signal-ink' : 'text-ink-3 hover:text-ink',
           )}
         >
           {l.label}

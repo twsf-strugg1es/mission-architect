@@ -32,7 +32,7 @@ export function HowToPlayDialog() {
             <li key={k}>{t(k)}</li>
           ))}
         </ol>
-        <p className="text-sm text-muted-foreground">{t('how.controls')}</p>
+        <p className="text-sm text-ink-3">{t('how.controls')}</p>
       </DialogContent>
     </Dialog>
   )
@@ -63,7 +63,7 @@ export function DataDialog() {
           <DialogDescription>{t('data.creditsText')}</DialogDescription>
         </DialogHeader>
         <section className="space-y-2">
-          <h3 className="font-semibold">{t('data.simplifications')}</h3>
+          <h3 className="font-medium">{t('data.simplifications')}</h3>
           <ul className="list-disc space-y-1.5 pl-5 text-sm">
             {simplifications.map((s) => (
               <li key={s}>{s}</li>
@@ -71,7 +71,7 @@ export function DataDialog() {
           </ul>
         </section>
         <section className="space-y-3">
-          <h3 className="font-semibold">{t('data.sources')}</h3>
+          <h3 className="font-medium">{t('data.sources')}</h3>
           {SOURCES.map(({ file, sources }) => (
             <div key={file} className="space-y-1">
               <h4 className="text-sm font-medium">{t(FILE_KEYS[file])}</h4>
@@ -83,14 +83,14 @@ export function DataDialog() {
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 break-all text-signal underline-offset-4 hover:underline"
+                        className="inline-flex items-center gap-1 break-all text-ink underline decoration-ink-4 underline-offset-4 hover:decoration-ink"
                       >
                         {s.name}
                         <ExternalLink className="size-3.5 shrink-0" aria-hidden />
                         <span className="sr-only">{t('data.newTab')}</span>
                       </a>
                     ) : (
-                      <span className="text-muted-foreground">{t('data.gameValues')}</span>
+                      <span className="text-ink-3">{t('data.gameValues')}</span>
                     )}
                   </li>
                 ))}
@@ -99,8 +99,8 @@ export function DataDialog() {
           ))}
         </section>
         <section className="space-y-1">
-          <h3 className="font-semibold">{t('data.credits')}</h3>
-          <p className="text-sm text-muted-foreground">{t('app.disclaimer')}</p>
+          <h3 className="font-medium">{t('data.credits')}</h3>
+          <p className="text-sm text-ink-3">{t('app.disclaimer')}</p>
         </section>
       </DialogContent>
     </Dialog>

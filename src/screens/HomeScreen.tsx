@@ -16,8 +16,8 @@ export function HomeScreen() {
   return (
     <section className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:py-16">
       <div className="max-w-3xl space-y-5">
-        <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">{t('app.title')}</h1>
-        <p className="text-lg text-muted-foreground sm:text-xl">{t('app.tagline')}</p>
+        <h1 className="text-4xl font-medium text-balance sm:text-6xl">{t('app.title')}</h1>
+        <p className="text-lg text-ink-2 sm:text-xl">{t('app.tagline')}</p>
         <div className="flex flex-wrap gap-3">
           <Button size="lg" onClick={startNewMission}>
             <Rocket aria-hidden data-icon="inline-start" />
@@ -35,7 +35,7 @@ export function HomeScreen() {
       </div>
 
       <div className="space-y-3">
-        <h2 id="difficulty" className="text-lg font-semibold">
+        <h2 id="difficulty" className="text-lg font-medium">
           {t('home.difficulty')}
         </h2>
         <div role="group" aria-labelledby="difficulty" className="grid gap-3 sm:grid-cols-3">
@@ -43,8 +43,8 @@ export function HomeScreen() {
             const [min, max] = d.eventCount
             return (
               <ChoiceCard key={d.id} selected={d.id === difficultyId} onSelect={() => setDifficulty(d.id)} selectedLabel={t('common.selected')}>
-                <span className="text-xl font-semibold">{tx(d.name)}</span>
-                <span className="text-sm text-muted-foreground">{tx(d.description)}</span>
+                <span className="text-xl font-medium">{tx(d.name)}</span>
+                <span className="text-sm text-ink-3">{tx(d.description)}</span>
                 <ul className="mt-auto space-y-0.5 text-sm tabular-nums">
                   <li>{t('diff.budget', { x: n(d.budgetMultiplier, 2) })}</li>
                   <li>{t('diff.deltaV', { x: n(d.deltaVMultiplier, 2) })}</li>
@@ -58,7 +58,7 @@ export function HomeScreen() {
       </div>
 
       <p className="flex items-center gap-2 text-sm">
-        <Trophy className="size-4 text-signal" aria-hidden />
+        <Trophy className="size-4 text-ink-3" aria-hidden />
         <span className="font-medium">{t('home.best')}:</span>
         <span className="tabular-nums">
           {best
@@ -67,7 +67,7 @@ export function HomeScreen() {
         </span>
       </p>
 
-      <p className="max-w-3xl border-t border-border pt-4 text-xs text-muted-foreground">{t('app.disclaimer')}</p>
+      <p className="max-w-3xl border-t border-rule pt-4 text-xs text-ink-3">{t('app.disclaimer')}</p>
     </section>
   )
 }
