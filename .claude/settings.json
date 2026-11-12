@@ -1,0 +1,20 @@
+{
+  "enabledPlugins": {
+    "ponytail@ponytail": true,
+    "nateherk-design@nateherk": true
+  },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "nateherk": {
+      "source": {
+        "source": "github",
+        "repo": "nateherkai/scroll-craft"
+      }
+    }
+  }
+}
