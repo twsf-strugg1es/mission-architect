@@ -51,6 +51,8 @@
   "launchRiskScale": 10,
   "eventPosition": [0.3, 0.75],
   "warnings": { "radiationLevel": 0.7, "protection": 6, "powerMarginPct": 10 },
+  "radiationBands": [0.3, 0.7],
+  "flightBars": { "reserveWarnPct": 5, "safetyOk": 60, "safetyWarn": 30, "scoreOk": 0.7, "scoreWarn": 0.4 },
   "debrief": { "marginExcess": 0.4, "scienceHigh": 0.9 },
   "scoring": {
     "science": 40,

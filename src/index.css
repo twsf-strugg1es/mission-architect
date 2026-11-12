@@ -16,6 +16,8 @@
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Geist Variable', 'Hind Siliguri', sans-serif;
+    --color-signal: var(--signal);
+    --color-signal-soft: var(--signal-soft);
     --color-ok: var(--ok);
     --color-warn: var(--warn);
     --color-bad: var(--bad);
@@ -61,6 +63,9 @@
 
 :root {
     /* Status colours: always paired with an icon and text, never the only signal. */
+    /* The one accent: selection, focus and primary actions. */
+    --signal: oklch(0.8 0.13 210);
+    --signal-soft: oklch(0.8 0.13 210 / 0.12);
     --ok: oklch(0.78 0.16 150);
     --warn: oklch(0.84 0.15 85);
     --bad: oklch(0.71 0.19 25);

@@ -275,6 +275,17 @@ const en = {
   'simp.windows': 'Launch windows scale travel time and delta-v: {list}.',
   'simp.ion': 'Ion engines cannot land and multiply travel time by {x}.',
   'simp.costs': 'Costs, masses and reliabilities are rounded public figures or game estimates.',
+  'simp.windowItem': '{name}: travel time ×{travel}, delta-v ×{dv}',
+  'simp.item': '{name} {value}',
+  'data.file.destinations': 'Destinations: distance, travel time, gravity, delta-v and radiation',
+  'data.file.vehicles': 'Launch vehicles: capacity, cost and reliability',
+  'data.file.engines': 'Engines: Isp, mass and cost',
+  'data.file.modules': 'Spacecraft modules',
+  'data.file.events': 'Event cards',
+  'data.file.difficulties': 'Difficulty levels',
+  'data.file.rules': 'Rocket equation, flight legs and scoring',
+  'data.gameValues': 'Game values: simplified estimates (details in the data files)',
+  'data.newTab': '(opens in a new tab)',
 }
 
 export type Dict = typeof en
@@ -553,6 +564,17 @@ const bn: Dict = {
   'simp.windows': 'উৎক্ষেপণ উইন্ডো যাত্রার সময় আর ডেল্টা-ভি বদলায়: {list}।',
   'simp.ion': 'আয়ন ইঞ্জিন অবতরণ করতে পারে না, আর যাত্রার সময় {x} গুণ করে।',
   'simp.costs': 'খরচ, ভর আর নির্ভরযোগ্যতা জনসমক্ষে প্রকাশিত সংখ্যার কাছাকাছি বা খেলার অনুমান।',
+  'simp.windowItem': '{name}: যাত্রার সময় ×{travel}, ডেল্টা-ভি ×{dv}',
+  'simp.item': '{name} {value}',
+  'data.file.destinations': 'গন্তব্য: দূরত্ব, যাত্রার সময়, মাধ্যাকর্ষণ, ডেল্টা-ভি ও বিকিরণ',
+  'data.file.vehicles': 'উৎক্ষেপণ রকেট: বহন ক্ষমতা, খরচ ও নির্ভরযোগ্যতা',
+  'data.file.engines': 'ইঞ্জিন: Isp, ভর ও খরচ',
+  'data.file.modules': 'মহাকাশযানের মডিউল',
+  'data.file.events': 'ঘটনার কার্ড',
+  'data.file.difficulties': 'কঠিনতার স্তর',
+  'data.file.rules': 'রকেট সমীকরণ, যাত্রার ধাপ ও স্কোর',
+  'data.gameValues': 'খেলার মান: সরলীকৃত অনুমান (বিস্তারিত ডেটা ফাইলে)',
+  'data.newTab': '(নতুন ট্যাবে খোলে)',
 }
 
 export const DICT: Record<Locale, Dict> = { en, bn }

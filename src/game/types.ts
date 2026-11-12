@@ -176,6 +176,10 @@ export type Rules = {
   eventPosition: number[]
   warnings: { radiationLevel: number; protection: number; powerMarginPct: number }
   debrief: { marginExcess: number; scienceHigh: number }
+  /** radiation level bands: below [0] low, below [1] medium, else high */
+  radiationBands: number[]
+  /** status thresholds for the flight and results bars */
+  flightBars: { reserveWarnPct: number; safetyOk: number; safetyWarn: number; scoreOk: number; scoreWarn: number }
   scoring: {
     science: number
     safety: number
