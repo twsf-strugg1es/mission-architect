@@ -5,12 +5,20 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+/* Geist has no Bengali glyphs: Hind Siliguri (Google Fonts, self-hosted) renders them. */
+@import "@fontsource/hind-siliguri/bengali-400.css";
+@import "@fontsource/hind-siliguri/bengali-500.css";
+@import "@fontsource/hind-siliguri/bengali-600.css";
+@import "@fontsource/hind-siliguri/bengali-700.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --font-heading: var(--font-sans);
-    --font-sans: 'Geist Variable', sans-serif;
+    --font-sans: 'Geist Variable', 'Hind Siliguri', sans-serif;
+    --color-ok: var(--ok);
+    --color-warn: var(--warn);
+    --color-bad: var(--bad);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,6 +60,10 @@
 }
 
 :root {
+    /* Status colours: always paired with an icon and text, never the only signal. */
+    --ok: oklch(0.78 0.16 150);
+    --warn: oklch(0.84 0.15 85);
+    --bad: oklch(0.71 0.19 25);
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
