@@ -1,0 +1,71 @@
+{
+  "sources": [
+    {
+      "name": "NASA Space Launch System",
+      "url": "https://www.nasa.gov/humans-in-space/space-launch-system/",
+      "note": "SLS Block 1 lift capacity (game uses 95 t to low Earth orbit)."
+    },
+    {
+      "name": "NASA Office of Inspector General, IG-22-003 (Artemis program costs)",
+      "url": "https://oig.nasa.gov/docs/IG-22-003.pdf",
+      "note": "Order of magnitude for an SLS launch; the game uses $2,200M."
+    },
+    { "name": "SpaceX Falcon 9", "url": "https://www.spacex.com/vehicles/falcon-9/", "note": "22.8 t to low Earth orbit." },
+    { "name": "SpaceX Falcon Heavy", "url": "https://www.spacex.com/vehicles/falcon-heavy/", "note": "63.8 t to low Earth orbit." },
+    { "name": "SpaceX Starship", "url": "https://www.spacex.com/vehicles/starship/", "note": "In development; 100 t and $250M are planning values." },
+    {
+      "name": "Game values",
+      "note": "Launch costs are rounded public prices. Reliability is a game estimate from flight history (Starship is lower because it is still in development). Rule: usable payload = payload to low Earth orbit; the spacecraft's own engine does the rest."
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "falcon-9",
+      "name": "Falcon 9",
+      "payloadToLEOTonnes": 22.8,
+      "costUSDm": 67,
+      "reliability": 0.99,
+      "inDevelopment": false,
+      "description": {
+        "en": "The reusable workhorse. Cheapest ride, but only small robotic missions fit.",
+        "bn": "পুনঃব্যবহারযোগ্য নির্ভরযোগ্য রকেট। সবচেয়ে সস্তা, তবে শুধু ছোট রোবোটিক মিশন আঁটে।"
+      }
+    },
+    {
+      "id": "falcon-heavy",
+      "name": "Falcon Heavy",
+      "payloadToLEOTonnes": 63.8,
+      "costUSDm": 97,
+      "reliability": 0.97,
+      "inDevelopment": false,
+      "description": {
+        "en": "Three Falcon 9 cores strapped together: big capacity for the price.",
+        "bn": "তিনটি ফ্যালকন ৯ কোর একসাথে জোড়া: দামের তুলনায় অনেক বেশি বহন ক্ষমতা।"
+      }
+    },
+    {
+      "id": "sls-block-1",
+      "name": "SLS Block 1",
+      "payloadToLEOTonnes": 95,
+      "costUSDm": 2200,
+      "reliability": 0.95,
+      "inDevelopment": false,
+      "description": {
+        "en": "A super-heavy Moon rocket, flown on Artemis I. Enormous, and enormously expensive.",
+        "bn": "চাঁদে যাওয়ার অতিভারী রকেট, আর্টেমিস ১-এ উড়েছে। বিশাল, আর খরচও বিশাল।"
+      }
+    },
+    {
+      "id": "starship",
+      "name": "Starship",
+      "payloadToLEOTonnes": 100,
+      "costUSDm": 250,
+      "reliability": 0.8,
+      "inDevelopment": true,
+      "description": {
+        "en": "A fully reusable giant, still in development: cheap per tonne, but riskier.",
+        "bn": "সম্পূর্ণ পুনঃব্যবহারযোগ্য বিশাল রকেট, এখনো উন্নয়নাধীন: প্রতি টনে সস্তা, কিন্তু ঝুঁকি বেশি।"
+      }
+    }
+  ]
+}

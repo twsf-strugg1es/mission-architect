@@ -1,0 +1,172 @@
+{
+  "sources": [
+    { "name": "NASA Orion spacecraft", "url": "https://www.nasa.gov/humans-in-space/orion-spacecraft/", "note": "Crew capsule scale (four crew, about 9 t crew module)." },
+    { "name": "NASA Curiosity rover (MSL)", "url": "https://science.nasa.gov/mission/msl-curiosity/", "note": "Rover mass (about 0.9 t) and the on-board Sample Analysis at Mars lab." },
+    { "name": "NASA Radioisotope Power Systems", "url": "https://science.nasa.gov/planetary-science/programs/radioisotope-power-systems/", "note": "RTGs give steady power from plutonium-238 decay, independent of sunlight; heavy per watt compared with solar." },
+    { "name": "NASA Small Spacecraft Technology: Power", "url": "https://www.nasa.gov/smallsat-institute/sst-soa/power-subsystems/", "note": "Solar arrays, batteries and power budgets." },
+    { "name": "NASA OSIRIS-REx", "url": "https://science.nasa.gov/mission/osiris-rex/", "note": "Sample return capsule concept." },
+    { "name": "Game values", "note": "Masses, costs, power draws and the 0–10 science, crew support, protection and comms ratings are simplified game estimates inspired by real hardware." }
+  ],
+  "modules": [
+    {
+      "id": "crew-capsule", "category": "command",
+      "name": { "en": "Crew Capsule", "bn": "ক্রু ক্যাপসুল" },
+      "massTonnes": 9, "costUSDm": 400, "powerKw": -2, "science": 0, "crewSupport": 6, "protection": 4,
+      "comms": 0, "crew": 4, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Life support draws 2 kW, day and night.", "bn": "লাইফ সাপোর্ট দিনরাত ২ কিলোওয়াট বিদ্যুৎ টানে।" },
+      "blurb": { "en": "Seats four, modelled on Orion's crew module. Makes this a crewed mission.", "bn": "চারজনের আসন, ওরিয়নের ক্রু মডিউলের আদলে। এটি থাকলে মিশনটি নভোচারীসহ হবে।" }
+    },
+    {
+      "id": "probe-core", "category": "command",
+      "name": { "en": "Robotic Probe Core", "bn": "রোবোটিক প্রোব কোর" },
+      "massTonnes": 0.5, "costUSDm": 80, "powerKw": -0.2, "science": 0, "crewSupport": 0, "protection": 1,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Avionics draw 0.2 kW.", "bn": "ইলেকট্রনিক্স ০.২ কিলোওয়াট টানে।" },
+      "blurb": { "en": "Flight computer, thrusters and tanks for an uncrewed mission. Much lighter, but no crew can fly.", "bn": "নভোচারীবিহীন মিশনের জন্য ফ্লাইট কম্পিউটার, থ্রাস্টার ও ট্যাংক। অনেক হালকা, তবে কোনো ক্রু যেতে পারবে না।" }
+    },
+    {
+      "id": "lander", "category": "landing",
+      "name": { "en": "Lunar/Mars Lander", "bn": "চাঁদ/মঙ্গল ল্যান্ডার" },
+      "massTonnes": 4, "costUSDm": 220, "powerKw": -0.3, "science": 1, "crewSupport": 1, "protection": 1,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Descent radar and heaters draw 0.3 kW.", "bn": "অবতরণ রাডার ও হিটার ০.৩ কিলোওয়াট টানে।" },
+      "blurb": { "en": "Legs, a descent engine and radar for touching down on the Moon or Mars.", "bn": "চাঁদ বা মঙ্গলে নামার জন্য পা, অবতরণ ইঞ্জিন ও রাডার।" }
+    },
+    {
+      "id": "sample-return", "category": "landing",
+      "name": { "en": "Sample Return Capsule", "bn": "নমুনা ফেরত ক্যাপসুল" },
+      "massTonnes": 0.4, "costUSDm": 90, "powerKw": 0, "science": 4, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": true, "maxCount": 1,
+      "requiresPowerNote": { "en": "No power needed.", "bn": "বিদ্যুৎ লাগে না।" },
+      "blurb": { "en": "A heat-shielded capsule that brings samples home to Earth's best labs. Its science counts once it lands.", "bn": "তাপরোধী ক্যাপসুল যা নমুনা পৃথিবীর সেরা গবেষণাগারে ফিরিয়ে আনে। এটি নেমে এলেই এর বিজ্ঞান গোনা হয়।" }
+    },
+    {
+      "id": "solar-small", "category": "power",
+      "name": { "en": "Small Solar Array", "bn": "ছোট সৌর প্যানেল" },
+      "massTonnes": 0.2, "costUSDm": 15, "powerKw": 1.5, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": true, "backupKw": 0, "returnsSamples": false, "maxCount": 3,
+      "requiresPowerNote": { "en": "Output scales with sunlight at the destination.", "bn": "গন্তব্যে সূর্যালোক যত, উৎপাদন তত।" },
+      "blurb": { "en": "1.5 kW at Earth's distance from the Sun.", "bn": "সূর্য থেকে পৃথিবীর দূরত্বে ১.৫ কিলোওয়াট।" }
+    },
+    {
+      "id": "solar-large", "category": "power",
+      "name": { "en": "Large Solar Array", "bn": "বড় সৌর প্যানেল" },
+      "massTonnes": 0.8, "costUSDm": 50, "powerKw": 6, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": true, "backupKw": 0, "returnsSamples": false, "maxCount": 3,
+      "requiresPowerNote": { "en": "Output scales with sunlight at the destination.", "bn": "গন্তব্যে সূর্যালোক যত, উৎপাদন তত।" },
+      "blurb": { "en": "6 kW at Earth's distance from the Sun. Big wings, big power.", "bn": "সূর্য থেকে পৃথিবীর দূরত্বে ৬ কিলোওয়াট। বড় ডানা, বেশি বিদ্যুৎ।" }
+    },
+    {
+      "id": "rtg", "category": "power",
+      "name": { "en": "RTG (radioisotope generator)", "bn": "আরটিজি (রেডিওআইসোটোপ জেনারেটর)" },
+      "massTonnes": 0.2, "costUSDm": 150, "powerKw": 0.45, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 2,
+      "requiresPowerNote": { "en": "Steady output that does not depend on sunlight.", "bn": "স্থির উৎপাদন, সূর্যালোকের ওপর নির্ভর করে না।" },
+      "blurb": { "en": "Plutonium-238 decay heat makes power day and night, far from the Sun and in dust storms. Heavy for what it gives.", "bn": "প্লুটোনিয়াম-২৩৮-এর ক্ষয়ের তাপ থেকে দিনরাত বিদ্যুৎ, সূর্য থেকে দূরে বা ধুলিঝড়েও। যা দেয় তার তুলনায় ভারী।" }
+    },
+    {
+      "id": "battery-bank", "category": "power",
+      "name": { "en": "Extra Battery Bank", "bn": "অতিরিক্ত ব্যাটারি" },
+      "massTonnes": 0.3, "costUSDm": 20, "powerKw": 0, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0.5, "returnsSamples": false, "maxCount": 2,
+      "requiresPowerNote": { "en": "Supplies 0.5 kW while the Sun is hidden.", "bn": "সূর্য ঢাকা পড়লে ০.৫ কিলোওয়াট জোগায়।" },
+      "blurb": { "en": "Stores energy for nights, eclipses and dust storms. Makes no new power.", "bn": "রাত, গ্রহণ ও ধুলিঝড়ের জন্য শক্তি জমিয়ে রাখে। নতুন বিদ্যুৎ তৈরি করে না।" }
+    },
+    {
+      "id": "spectrometer", "category": "science",
+      "name": { "en": "Spectrometer", "bn": "স্পেকট্রোমিটার" },
+      "massTonnes": 0.05, "costUSDm": 35, "powerKw": -0.05, "science": 3, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Draws 0.05 kW.", "bn": "০.০৫ কিলোওয়াট টানে।" },
+      "blurb": { "en": "Reads the chemistry of rocks from the light they reflect.", "bn": "পাথর থেকে প্রতিফলিত আলো দেখে তার রাসায়নিক গঠন বোঝে।" }
+    },
+    {
+      "id": "drill", "category": "science",
+      "name": { "en": "Drill", "bn": "ড্রিল" },
+      "massTonnes": 0.25, "costUSDm": 60, "powerKw": -0.4, "science": 4, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Power-hungry: 0.4 kW while drilling.", "bn": "বিদ্যুৎ-খেকো: খননের সময় ০.৪ কিলোওয়াট।" },
+      "blurb": { "en": "Bores below the radiation-blasted surface, where ice and organic molecules can survive.", "bn": "বিকিরণে পোড়া উপরিতলের নিচে খনন করে, যেখানে বরফ ও জৈব অণু টিকে থাকতে পারে।" }
+    },
+    {
+      "id": "seismometer", "category": "science",
+      "name": { "en": "Seismometer", "bn": "সিসমোমিটার" },
+      "massTonnes": 0.05, "costUSDm": 30, "powerKw": -0.02, "science": 2, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Draws 0.02 kW.", "bn": "০.০২ কিলোওয়াট টানে।" },
+      "blurb": { "en": "Listens for quakes to map the world's interior, like the InSight lander on Mars.", "bn": "ভূকম্প শুনে ভেতরের গঠন বোঝে, মঙ্গলে ইনসাইট ল্যান্ডারের মতো।" }
+    },
+    {
+      "id": "camera-suite", "category": "science",
+      "name": { "en": "HD Camera Suite", "bn": "এইচডি ক্যামেরা সেট" },
+      "massTonnes": 0.04, "costUSDm": 20, "powerKw": -0.03, "science": 2, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Draws 0.03 kW.", "bn": "০.০৩ কিলোওয়াট টানে।" },
+      "blurb": { "en": "High-resolution colour cameras for mapping, navigation and sharing the view.", "bn": "মানচিত্র তৈরি, পথ খোঁজা আর দৃশ্য দেখানোর জন্য উচ্চ-রেজোলিউশনের রঙিন ক্যামেরা।" }
+    },
+    {
+      "id": "sample-lab", "category": "science",
+      "name": { "en": "Sample Analysis Lab", "bn": "নমুনা বিশ্লেষণ ল্যাব" },
+      "massTonnes": 0.6, "costUSDm": 140, "powerKw": -0.8, "science": 6, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Ovens and pumps draw 0.8 kW.", "bn": "চুল্লি ও পাম্প ০.৮ কিলোওয়াট টানে।" },
+      "blurb": { "en": "A miniature laboratory that analyses samples on the spot, like Curiosity's SAM.", "bn": "ঘটনাস্থলেই নমুনা বিশ্লেষণ করা ক্ষুদ্র গবেষণাগার, কিউরিওসিটির SAM-এর মতো।" }
+    },
+    {
+      "id": "basic-radio", "category": "comms",
+      "name": { "en": "Basic Radio", "bn": "সাধারণ রেডিও" },
+      "massTonnes": 0.03, "costUSDm": 8, "powerKw": -0.05, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 5, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Draws 0.05 kW.", "bn": "০.০৫ কিলোওয়াট টানে।" },
+      "blurb": { "en": "A low-gain antenna: works from any angle, but data trickles home slowly.", "bn": "লো-গেইন অ্যান্টেনা: যেকোনো দিক থেকে কাজ করে, কিন্তু তথ্য ধীরে পৌঁছায়।" }
+    },
+    {
+      "id": "high-gain-antenna", "category": "comms",
+      "name": { "en": "High-Gain Antenna", "bn": "হাই-গেইন অ্যান্টেনা" },
+      "massTonnes": 0.15, "costUSDm": 45, "powerKw": -0.2, "science": 0, "crewSupport": 0, "protection": 0,
+      "comms": 10, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "The transmitter draws 0.2 kW.", "bn": "ট্রান্সমিটার ০.২ কিলোওয়াট টানে।" },
+      "blurb": { "en": "A dish pointed at Earth: sends all your science home and holds the link in bad conditions.", "bn": "পৃথিবীর দিকে তাক করা ডিশ: সব বৈজ্ঞানিক তথ্য পাঠায় আর খারাপ অবস্থাতেও যোগাযোগ ধরে রাখে।" }
+    },
+    {
+      "id": "radiation-shielding", "category": "protection",
+      "name": { "en": "Radiation Shielding (light/heavy)", "bn": "বিকিরণ সুরক্ষা (হালকা/ভারী)" },
+      "massTonnes": 1, "costUSDm": 35, "powerKw": 0, "science": 0, "crewSupport": 0, "protection": 3,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 2,
+      "requiresPowerNote": { "en": "No power needed.", "bn": "বিদ্যুৎ লাগে না।" },
+      "blurb": { "en": "Polyethylene and water layers that stop solar protons. One layer is light shielding, two is heavy.", "bn": "পলিইথিলিন ও পানির স্তর যা সৌর প্রোটন আটকায়। এক স্তর হালকা সুরক্ষা, দুই স্তর ভারী।" }
+    },
+    {
+      "id": "spare-parts", "category": "protection",
+      "name": { "en": "Spare Parts Kit", "bn": "স্পেয়ার পার্টস কিট" },
+      "massTonnes": 0.3, "costUSDm": 25, "powerKw": 0, "science": 0, "crewSupport": 1, "protection": 1,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "No power needed.", "bn": "বিদ্যুৎ লাগে না।" },
+      "blurb": { "en": "Replacement wheels, valves and circuit boards. Turns failures into repairs.", "bn": "বদলি চাকা, ভালভ ও সার্কিট বোর্ড। বিকলকে মেরামতে বদলে দেয়।" }
+    },
+    {
+      "id": "redundant-computer", "category": "protection",
+      "name": { "en": "Redundant Flight Computer", "bn": "অতিরিক্ত ফ্লাইট কম্পিউটার" },
+      "massTonnes": 0.05, "costUSDm": 40, "powerKw": -0.1, "science": 0, "crewSupport": 0, "protection": 2,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Draws 0.1 kW.", "bn": "০.১ কিলোওয়াট টানে।" },
+      "blurb": { "en": "A second flight computer that takes over in milliseconds if the first one fails.", "bn": "দ্বিতীয় একটি ফ্লাইট কম্পিউটার, প্রথমটি বিকল হলে মিলিসেকেন্ডে দায়িত্ব নেয়।" }
+    },
+    {
+      "id": "rover", "category": "surface",
+      "name": { "en": "Rover", "bn": "রোভার" },
+      "massTonnes": 0.9, "costUSDm": 150, "powerKw": -0.3, "science": 5, "crewSupport": 0, "protection": 0,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Recharges from your power system: 0.3 kW.", "bn": "আপনার বিদ্যুৎ ব্যবস্থা থেকে চার্জ নেয়: ০.৩ কিলোওয়াট।" },
+      "blurb": { "en": "A Curiosity-class rover that drives to new sites for fresh science.", "bn": "কিউরিওসিটি শ্রেণির রোভার, নতুন বিজ্ঞানের খোঁজে নতুন জায়গায় চলে যায়।" }
+    },
+    {
+      "id": "habitat", "category": "surface",
+      "name": { "en": "Habitat Module", "bn": "হ্যাবিটাট মডিউল" },
+      "massTonnes": 12, "costUSDm": 450, "powerKw": -3, "science": 2, "crewSupport": 8, "protection": 4,
+      "comms": 0, "crew": 0, "solar": false, "backupKw": 0, "returnsSamples": false, "maxCount": 1,
+      "requiresPowerNote": { "en": "Heating, air and water recycling draw 3 kW.", "bn": "তাপ, বাতাস ও পানি পুনর্ব্যবহারে ৩ কিলোওয়াট লাগে।" },
+      "blurb": { "en": "Living quarters with a medical bay and water walls, for long crewed stays.", "bn": "দীর্ঘ মানব-অভিযানের জন্য চিকিৎসা কক্ষ ও পানির দেয়ালসহ থাকার জায়গা।" }
+    }
+  ]
+}

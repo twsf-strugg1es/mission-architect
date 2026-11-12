@@ -1,32 +1,47 @@
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { BudgetBar } from '@/components/BudgetBar'
+import { DESTINATIONS } from '@/game/data'
+import { fmt, fmtSig, t, tx } from '@/game/i18n'
+import type { Locale } from '@/game/types'
 
-// Phase 0 placeholder: checks the Bengali font fallback and the accessible BudgetBar.
-// Replaced by the game screens in Phase 3/4.
+// Phase 1 preview: destination data from JSON + the en/bn dictionary. Replaced by the game screens in Phase 3/4.
 function App() {
-  const [checked, setChecked] = useState(40)
+  const [locale, setLocale] = useState<Locale>('en')
 
   return (
-    <main className="starfield flex min-h-svh flex-col items-center justify-center gap-8 px-4 text-center">
-      <div className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">Mission Architect</h1>
-        <p lang="bn" className="text-xl">
-          মিশন আর্কিটেক্ট
-        </p>
+    <main lang={locale} className="starfield min-h-svh px-4 py-10">
+      <div className="mx-auto max-w-4xl space-y-6">
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-3xl font-semibold">{t(locale, 'app.title')}</h1>
+          <div role="group" aria-label={t(locale, 'lang.label')} className="flex gap-1">
+            {(['en', 'bn'] as const).map((l) => (
+              <button
+                key={l}
+                type="button"
+                aria-pressed={locale === l}
+                onClick={() => setLocale(l)}
+                className="rounded-md border px-3 py-1.5 text-sm aria-pressed:bg-primary aria-pressed:text-primary-foreground"
+              >
+                {l === 'en' ? 'EN' : 'বাংলা'}
+              </button>
+            ))}
+          </div>
+        </div>
+        <p className="text-muted-foreground">{t(locale, 'dest.intro')}</p>
+        <ul className="grid gap-4 sm:grid-cols-3">
+          {DESTINATIONS.map((d) => (
+            <li key={d.id} className="space-y-2 rounded-xl border bg-card p-4">
+              <h2 className="text-xl font-semibold">{tx(locale, d.name)}</h2>
+              <p className="text-sm">
+                {t(locale, 'stat.deltaV')}: {t(locale, 'unit.kms', { n: fmt(locale, d.deltaVRequired, 1) })}
+              </p>
+              <p className="text-sm">
+                {t(locale, 'stat.gravity')}: {t(locale, 'unit.ms2', { n: fmtSig(locale, d.gravityMS2, 3) })}
+              </p>
+              <p className="text-sm text-muted-foreground">{tx(locale, d.funFact)}</p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <BudgetBar
-        className="w-full max-w-sm text-left"
-        label="Systems check"
-        value={checked}
-        max={100}
-        valueText={`${checked} / 100 %`}
-        status={checked === 100 ? 'ok' : 'warn'}
-        statusText={checked === 100 ? 'All systems go' : 'Checks pending'}
-      />
-      <Button size="lg" onClick={() => setChecked(100)}>
-        Run systems check
-      </Button>
     </main>
   )
 }

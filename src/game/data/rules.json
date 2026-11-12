@@ -1,0 +1,62 @@
+{
+  "sources": [
+    { "name": "NASA Glenn Research Center: the rocket equation", "url": "https://www.grc.nasa.gov/www/k-12/rocket/rktpow.html", "note": "Δv = Isp × g0 × ln(m0 / mf), with g0 = 9.80665 m/s²." },
+    { "name": "NASA Open Science Data Repository (OSDR, incl. RadLab)", "url": "https://osdr.nasa.gov/bio/", "note": "Crew radiation dose per day in deep space is a game value informed by space-radiation data; doses only accrue on transit and return legs." },
+    { "name": "NASA NSSDC Mars Fact Sheet", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html", "note": "Solar irradiance ratio behind solar scaling; in a global dust storm the game keeps 30% of solar output." },
+    { "name": "Game design", "note": "Dry structure mass, base budget, launch windows, leg delta-v shares, animation timing and scoring weights are game balance values." }
+  ],
+  "dryStructureTonnes": 2,
+  "baseBudgetUSDm": 1500,
+  "propellant": { "startTonnes": 20, "stepTonnes": 0.5 },
+  "barWarnRatio": 0.9,
+  "deltaVWarnMargin": 0.05,
+  "launchWindows": [
+    {
+      "id": "early",
+      "name": { "en": "Early", "bn": "আগাম" },
+      "description": { "en": "Leave sooner on a fast, steep transfer: a shorter trip, but more delta-v.", "bn": "আগে রওনা, দ্রুত ও খাড়া পথে: যাত্রা ছোট, কিন্তু ডেল্টা-ভি বেশি।" },
+      "travelTimeMultiplier": 0.8,
+      "deltaVMultiplier": 1.15
+    },
+    {
+      "id": "standard",
+      "name": { "en": "Standard", "bn": "সাধারণ" },
+      "description": { "en": "The classic transfer most missions fly.", "bn": "বেশিরভাগ মিশন যে প্রচলিত পথে যায়।" },
+      "travelTimeMultiplier": 1,
+      "deltaVMultiplier": 1
+    },
+    {
+      "id": "late",
+      "name": { "en": "Late (efficient)", "bn": "দেরিতে (সাশ্রয়ী)" },
+      "description": { "en": "Wait for a slower, gentler path (gravity assists, low-energy arcs): a longer trip, but less delta-v.", "bn": "ধীর ও মৃদু পথের অপেক্ষা (মাধ্যাকর্ষণ-সহায়তা, কম শক্তির বাঁক): যাত্রা দীর্ঘ, কিন্তু ডেল্টা-ভি কম।" },
+      "travelTimeMultiplier": 1.3,
+      "deltaVMultiplier": 0.9
+    }
+  ],
+  "legs": [
+    { "id": "launch", "deltaVShare": 0.5, "animSeconds": 7 },
+    { "id": "transit", "deltaVShare": 0.05, "animSeconds": 28 },
+    { "id": "arrival", "deltaVShare": 0.35, "animSeconds": 9 },
+    { "id": "surface", "deltaVShare": 0, "animSeconds": 14 },
+    { "id": "return", "deltaVShare": 0.1, "animSeconds": 12 }
+  ],
+  "launchDays": 1,
+  "arrivalDays": 2,
+  "reportDays": 1,
+  "radiationSafetyPerDay": 0.06,
+  "protectionCap": 12,
+  "commsFactorBase": 0.4,
+  "commsFactorPerPoint": 0.06,
+  "dustStormSolarFactor": 0.3,
+  "launchRiskScale": 10,
+  "eventPosition": [0.3, 0.75],
+  "scoring": {
+    "science": 40,
+    "safety": 25,
+    "budget": 15,
+    "deltaVMargin": 10,
+    "events": 10,
+    "deltaVMarginFull": 0.15,
+    "failMultiplier": 0.3
+  }
+}
