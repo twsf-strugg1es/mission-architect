@@ -1,0 +1,164 @@
+1
+00:00:01,180 --> 00:00:03,440
+We are team Minus Zero:
+
+2
+00:00:03,440 --> 00:00:08,100
+Ahmad Farruk Towsif and MD Toslim Uddin Rahat.
+
+3
+00:00:08,100 --> 00:00:10,940
+Our project is Mission Architect,
+
+4
+00:00:10,940 --> 00:00:14,310
+built for the Space Mission Design Game challenge.
+
+5
+00:00:15,060 --> 00:00:19,110
+Real space missions take years and huge teams
+
+6
+00:00:19,110 --> 00:00:22,430
+to design, so students never get to feel
+
+7
+00:00:22,430 --> 00:00:25,100
+how mission design actually works —
+
+8
+00:00:25,100 --> 00:00:27,720
+how one choice about fuel,
+
+9
+00:00:27,720 --> 00:00:32,960
+power or money decides whether a mission lives or dies.
+
+10
+00:00:33,940 --> 00:00:37,490
+Mission Architect turns that into a game anyone
+
+11
+00:00:37,490 --> 00:00:39,050
+can play in a browser.
+
+12
+00:00:40,110 --> 00:00:41,570
+You pick a destination —
+
+13
+00:00:41,570 --> 00:00:43,290
+the Moon, Mars,
+
+14
+00:00:43,290 --> 00:00:45,750
+or asteroid Bennu —
+
+15
+00:00:45,750 --> 00:00:48,970
+choose a real rocket and engine,
+
+16
+00:00:48,970 --> 00:00:52,670
+and build your spacecraft part by part.
+
+17
+00:00:53,800 --> 00:00:57,380
+A real rocket equation checks your delta-v live.
+
+18
+00:00:58,510 --> 00:01:00,970
+Too heavy, no power,
+
+19
+00:01:00,970 --> 00:01:02,570
+not enough fuel —
+
+20
+00:01:02,570 --> 00:01:05,860
+the game will not let you launch,
+
+21
+00:01:05,860 --> 00:01:09,030
+and it tells you why in plain language.
+
+22
+00:01:09,920 --> 00:01:13,700
+In flight, real dangers strike:
+
+23
+00:01:13,700 --> 00:01:17,380
+solar flares, dust storms,
+
+24
+00:01:17,380 --> 00:01:21,250
+equipment failures. Whether you survive depends
+
+25
+00:01:21,250 --> 00:01:22,740
+on what you built.
+
+26
+00:01:23,700 --> 00:01:27,300
+Every mission ends with a grade and a
+
+27
+00:01:27,300 --> 00:01:30,710
+debrief that explains your own decisions.
+
+28
+00:01:31,830 --> 00:01:33,640
+It runs in any browser,
+
+29
+00:01:33,640 --> 00:01:37,010
+on a phone or a computer,
+
+30
+00:01:37,010 --> 00:01:38,770
+by mouse or keyboard.
+
+31
+00:01:40,080 --> 00:01:44,620
+Our game runs on real NASA data:
+
+32
+00:01:44,620 --> 00:01:47,450
+the NASA Open Science Data Repository,
+
+33
+00:01:47,450 --> 00:01:49,800
+including radiation data;
+
+34
+00:01:49,800 --> 00:01:53,450
+NASA Planetary Fact Sheets for distance,
+
+35
+00:01:53,450 --> 00:01:55,260
+gravity and delta-v;
+
+36
+00:01:55,260 --> 00:01:59,660
+the NASA JPL Small-Body Database for asteroid Bennu;
+
+37
+00:01:59,660 --> 00:02:05,400
+and NASA DONKI space-weather data behind our solar flare events.
+
+38
+00:02:06,360 --> 00:02:08,440
+Mission Architect — design it,
+
+39
+00:02:08,440 --> 00:02:09,790
+build it, fly it.
+
+40
+00:02:09,790 --> 00:02:11,240
+Play it live —
+
+41
+00:02:11,240 --> 00:02:13,640
+the link is on our project page.
+

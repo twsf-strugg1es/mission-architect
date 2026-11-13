@@ -1,0 +1,12 @@
+Mission Architect: Video B (global judging, 30 seconds)
+Save the recording as voice-b.mp3 (or .m4a or .wav) in tools/video/assets/.
+Read it in one go, fast but clear. Aim for about 25 seconds; it must stay under 28 seconds.
+
+How to record
+- One file for this video. A quiet room. Phone about 20 cm from your mouth.
+- Read the whole text in one go, word for word.
+- If you make a mistake, pause 2 seconds, then read the whole text again.
+- Say OSDR as "O-S-D-R", DONKI as "DON-kee", JPL as "J-P-L", Bennu as "BEN-oo", delta-v as "delta vee".
+
+We are team Minus Zero. Mission Architect: a browser game where you design a real space mission — pick the Moon, Mars or Bennu, build your spacecraft under a real rocket equation, survive real events, and get graded on your decisions. Built on NASA data: OSDR, Planetary Fact Sheets, JPL Small-Body Database and DONKI. Play it live — link on our project page.
+

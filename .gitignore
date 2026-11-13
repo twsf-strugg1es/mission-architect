@@ -28,3 +28,8 @@ dist-ssr
 
 # Playwright MCP runtime output (console logs, snapshots)
 .playwright-mcp/
+
+# Submission videos: raw recordings, renders and the team's voice recordings stay local (large / personal)
+tools/video/raw/
+tools/video/out/
+tools/video/assets/voice-*

@@ -1,0 +1,36 @@
+Mission Architect — team Minus Zero (Ahmad Farruk Towsif, MD Toslim Uddin Rahat)
+NASA Space Apps Challenge 2026, Bangladesh — "Space Mission Design Game"
+
+1. FINAL VIDEOS (tools/video/out/), verified with ffprobe
+   All: 1920x1080, 30 fps, H.264 video + AAC audio
+   mission-architect-local-240s.mp4         235.37 s (3:55.4)   17,777,277 bytes (17.8 MB)
+   mission-architect-local-240s-small.mp4   235.38 s (3:55.4)   11,046,265 bytes (11.0 MB)
+   mission-architect-global-30s.mp4          29.50 s             3,880,232 bytes (3.9 MB)
+   mission-architect-global-30s-small.mp4    29.50 s             2,754,309 bytes (2.8 MB)
+
+2. GAME
+   Run the game: npm ci, then npm run dev. Build: npm run build (output: dist/).
+   Netlify deploy: build command `npm run build`, publish directory `dist`.
+
+3. VIDEO EDIT
+   Re-run the video edit: see tools/video/build_video.py — it needs the
+   align-*.json files and the Geist fonts named here.
+   - Usage: python3 build_video.py a   (Video A)   |   python3 build_video.py b   (Video B)
+   - Needs: ffmpeg (with libass), Python 3 with numpy and Pillow.
+   - Word timings: tools/video/align-a.json and tools/video/align-b.json
+     (script text forced-aligned to the voiceovers with CMU PocketSphinx).
+   - Fonts used (NOT included in this zip): geist-latin-wght-normal.ttf and
+     geist-mono-latin-wght-normal.ttf. These are TTF conversions of
+     tools/video/remotion/public/fonts/geist-latin-wght-normal.woff2 and
+     geist-mono-latin-wght-normal.woff2 (converted with fontTools).
+     The subtitle renderer looks for them in a fonts folder.
+   - The script still contains the paths of the machine it was made on
+     (/home/claude/...). Edit the path lines at the top of the script
+     (ROOT, W, the align-*.json path, the font paths and the fontsdir)
+     before running it on your PC.
+
+4. NOT IN THIS ZIP
+   - node_modules/ folders (reinstall with `npm ci`, and `npm ci` inside
+     tools/video/remotion/ if you use Remotion).
+   - Scratch renders and segment files from the video edit.
+   - tools/video/out/poster.png: it was planned but never rendered.

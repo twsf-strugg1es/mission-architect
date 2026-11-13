@@ -1,0 +1,33 @@
+Mission Architect: Video A (local judging, under 4 minutes)
+Save the recording as voice-a.mp3 (or .m4a or .wav) in tools/video/assets/.
+Read at a calm, normal speed. The video fills the time with gameplay.
+
+How to record
+- One file for this video. A quiet room. Phone about 20 cm from your mouth.
+- Read each line word for word. Do not read the line numbers.
+- Pause about 2 seconds after each line.
+- If you make a mistake, pause 2 seconds, then read the whole line again.
+- Say OSDR as "O-S-D-R", DONKI as "DON-kee", JPL as "J-P-L", Bennu as "BEN-oo", delta-v as "delta vee".
+
+1. We are team Minus Zero: Ahmad Farruk Towsif and MD Toslim Uddin Rahat. Our project is Mission Architect, built for the Space Mission Design Game challenge.
+
+2. Real space missions take years and huge teams to design, so students never get to feel how mission design actually works — how one choice about fuel, power or money decides whether a mission lives or dies.
+
+3. Mission Architect turns that into a game anyone can play in a browser.
+
+4. You pick a destination — the Moon, Mars, or asteroid Bennu — choose a real rocket and engine, and build your spacecraft part by part.
+
+5. A real rocket equation checks your delta-v live.
+
+6. Too heavy, no power, not enough fuel — the game will not let you launch, and it tells you why in plain language.
+
+7. In flight, real dangers strike: solar flares, dust storms, equipment failures. Whether you survive depends on what you built.
+
+8. Every mission ends with a grade and a debrief that explains your own decisions.
+
+9. It runs in any browser, on a phone or a computer, by mouse or keyboard.
+
+10. Our game runs on real NASA data: the NASA Open Science Data Repository, including radiation data; NASA Planetary Fact Sheets for distance, gravity and delta-v; the NASA JPL Small-Body Database for asteroid Bennu; and NASA DONKI space-weather data behind our solar flare events.
+
+11. Mission Architect — design it, build it, fly it. Play it live — the link is on our project page.
+
