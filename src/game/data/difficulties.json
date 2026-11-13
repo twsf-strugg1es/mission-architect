@@ -5,8 +5,8 @@
   "difficulties": [
     {
       "id": "cadet",
-      "name": { "en": "Cadet", "bn": "ক্যাডেট" },
-      "description": { "en": "For first flights: a generous budget and hints that point the way.", "bn": "প্রথম উড়ানের জন্য: উদার বাজেট আর পথ দেখানো ইঙ্গিত।" },
+      "name": "Cadet",
+      "description": "Easy. You get a big budget, and hints help you.",
       "budgetMultiplier": 1.5,
       "deltaVMultiplier": 0.9,
       "eventCount": [2, 2],
@@ -15,8 +15,8 @@
     },
     {
       "id": "engineer",
-      "name": { "en": "Engineer", "bn": "ইঞ্জিনিয়ার" },
-      "description": { "en": "Real numbers, real trade-offs. Hints only when you ask.", "bn": "আসল সংখ্যা, আসল আপস। চাইলে তবেই ইঙ্গিত।" },
+      "name": "Engineer",
+      "description": "Normal. Real numbers and hard choices. You get hints only when you ask.",
       "budgetMultiplier": 1,
       "deltaVMultiplier": 1,
       "eventCount": [3, 4],
@@ -25,8 +25,8 @@
     },
     {
       "id": "commander",
-      "name": { "en": "Commander", "bn": "কমান্ডার" },
-      "description": { "en": "Tight money, tougher physics, more trouble and stricter grading. No hints.", "bn": "টানাটানির বাজেট, কঠিন হিসাব, বেশি ঝামেলা আর কড়া মূল্যায়ন। কোনো ইঙ্গিত নেই।" },
+      "name": "Commander",
+      "description": "Hard. Less money, more delta-v needed and more problems. Good grades are harder to get. No hints.",
       "budgetMultiplier": 0.75,
       "deltaVMultiplier": 1.05,
       "eventCount": [5, 5],

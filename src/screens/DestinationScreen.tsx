@@ -14,7 +14,7 @@ function levelKey(value: number): DictKey {
 }
 
 export function DestinationScreen() {
-  const { t, tx, n, sig } = useI18n()
+  const { t, n, sig } = useI18n()
   const { build, updateBuild, go, difficultyId } = useGame()
   const difficulty = byId(DIFFICULTIES, difficultyId)
 
@@ -45,9 +45,9 @@ export function DestinationScreen() {
               onSelect={() => updateBuild({ destinationId: d.id })}
               selectedLabel={t('common.selected')}
             >
-              <span className="pr-24 text-2xl font-medium">{tx(d.name)}</span>
+              <span className="pr-24 text-2xl font-medium">{d.name}</span>
               <Badge variant="outline">{t(d.landing ? 'dest.lands' : 'dest.rendezvous')}</Badge>
-              <span className="text-sm text-ink-3">{tx(d.description)}</span>
+              <span className="text-sm text-ink-3">{d.description}</span>
               <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                 {stats.map(([label, value]) => (
                   <div key={label}>
@@ -57,13 +57,13 @@ export function DestinationScreen() {
                 ))}
               </dl>
               <span className="text-xs text-ink-3">
-                {t('stat.distance')}: {tx(d.distanceNote)}
+                {t('stat.distance')}: {d.distanceNote}
               </span>
               <span className="mt-auto flex gap-2 border-t border-rule pt-3 text-sm text-ink-2">
                 <Lightbulb className="mt-0.5 size-4 shrink-0 text-ink-3" aria-hidden />
                 <span>
                   <span className="font-medium">{t('dest.funFact')} </span>
-                  {tx(d.funFact)}
+                  {d.funFact}
                 </span>
               </span>
             </ChoiceCard>

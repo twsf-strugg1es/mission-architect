@@ -32,7 +32,7 @@ function OrbitDiagram({ windowId, label }: { windowId: string; label: string }) 
 }
 
 export function LaunchWindowScreen() {
-  const { t, tx, n } = useI18n()
+  const { t, n } = useI18n()
   const { build, windowId, setWindow, launch, go, difficultyId } = useGame()
   const options = RULES.launchWindows.map((w) => ({ w, r: analyzeBuild(build, difficultyId, w) }))
   const selected = options.find((o) => o.w.id === windowId) ?? options[1]
@@ -55,9 +55,9 @@ export function LaunchWindowScreen() {
           const ok = r.deltaV >= r.requiredDeltaV
           return (
             <ChoiceCard key={w.id} selected={w.id === windowId} onSelect={() => setWindow(w.id)} selectedLabel={t('common.selected')}>
-              <OrbitDiagram windowId={w.id} label={t('win.diagram', { name: tx(w.name) })} />
-              <span className="text-xl font-medium">{tx(w.name)}</span>
-              <span className="text-sm text-ink-3">{tx(w.description)}</span>
+              <OrbitDiagram windowId={w.id} label={t('win.diagram', { name: w.name })} />
+              <span className="text-xl font-medium">{w.name}</span>
+              <span className="text-sm text-ink-3">{w.description}</span>
               <dl className="grid grid-cols-3 gap-2 text-sm">
                 <div>
                   <dt className="text-xs text-ink-3">{t('win.travel')}</dt>

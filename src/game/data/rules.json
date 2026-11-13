@@ -13,22 +13,22 @@
   "launchWindows": [
     {
       "id": "early",
-      "name": { "en": "Early", "bn": "আগাম" },
-      "description": { "en": "Leave sooner on a fast, steep transfer: a shorter trip, but more delta-v.", "bn": "আগে রওনা, দ্রুত ও খাড়া পথে: যাত্রা ছোট, কিন্তু ডেল্টা-ভি বেশি।" },
+      "name": "Early",
+      "description": "Leave sooner on a fast path. The trip is shorter, but it needs more delta-v.",
       "travelTimeMultiplier": 0.8,
       "deltaVMultiplier": 1.15
     },
     {
       "id": "standard",
-      "name": { "en": "Standard", "bn": "সাধারণ" },
-      "description": { "en": "The classic transfer most missions fly.", "bn": "বেশিরভাগ মিশন যে প্রচলিত পথে যায়।" },
+      "name": "Standard",
+      "description": "The usual path. Most missions use it.",
       "travelTimeMultiplier": 1,
       "deltaVMultiplier": 1
     },
     {
       "id": "late",
-      "name": { "en": "Late (efficient)", "bn": "দেরিতে (সাশ্রয়ী)" },
-      "description": { "en": "Wait for a slower, gentler path (gravity assists, low-energy arcs): a longer trip, but less delta-v.", "bn": "ধীর ও মৃদু পথের অপেক্ষা (মাধ্যাকর্ষণ-সহায়তা, কম শক্তির বাঁক): যাত্রা দীর্ঘ, কিন্তু ডেল্টা-ভি কম।" },
+      "name": "Late (saves fuel)",
+      "description": "Wait for a slower path. The trip is longer, but it needs less delta-v.",
       "travelTimeMultiplier": 1.3,
       "deltaVMultiplier": 0.9
     }

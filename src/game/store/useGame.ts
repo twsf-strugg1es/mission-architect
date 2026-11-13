@@ -1,11 +1,11 @@
 // Game state machine: which screen is showing, the build in progress, the flight, and saved settings.
-// No router: screens are driven by `screen`. Language, difficulty and best score persist in localStorage.
+// No router: screens are driven by `screen`. Difficulty and best score persist in localStorage.
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { byId, MODULES, RULES } from '../data'
 import { createContext, type MissionState } from '../engine/mission'
 import { scoreMission } from '../engine/score'
-import type { Build, Grade, Locale } from '../types'
+import type { Build, Grade } from '../types'
 
 export type Screen = 'home' | 'destination' | 'vehicle' | 'builder' | 'launchWindow' | 'simulation' | 'results'
 export type Overlay = 'howToPlay' | 'data' | null
@@ -36,7 +36,6 @@ const newSeed = () => {
 }
 
 type GameState = {
-  locale: Locale
   difficultyId: string
   best: Best | null
   screen: Screen
@@ -47,7 +46,6 @@ type GameState = {
   mission: MissionState | null
   newBest: boolean
 
-  setLocale: (locale: Locale) => void
   setDifficulty: (id: string) => void
   setOverlay: (overlay: Overlay) => void
   go: (screen: Screen) => void
@@ -65,7 +63,6 @@ type GameState = {
 export const useGame = create<GameState>()(
   persist(
     (set, get) => ({
-      locale: 'en',
       difficultyId: 'cadet',
       best: null,
       screen: screenFromHash(),
@@ -76,7 +73,6 @@ export const useGame = create<GameState>()(
       mission: null,
       newBest: false,
 
-      setLocale: (locale) => set({ locale }),
       setDifficulty: (difficultyId) => set({ difficultyId }),
       setOverlay: (overlay) => set({ overlay }),
       go: (screen) => set({ screen, overlay: null }),
@@ -113,7 +109,7 @@ export const useGame = create<GameState>()(
     }),
     {
       name: 'mission-architect',
-      partialize: (s) => ({ locale: s.locale, difficultyId: s.difficultyId, best: s.best }),
+      partialize: (s) => ({ difficultyId: s.difficultyId, best: s.best }),
     },
   ),
 )

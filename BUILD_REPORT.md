@@ -9,7 +9,19 @@ Built 2026-11-13, phase by phase. Each phase passed `npm run build`, a Playwrigh
 | 2 | `ea9cb6d` | Engine: rocket equation, launch checks, seeded mission sim, scoring, 21 tests |
 | 3 | `bbb5d29` | zustand state machine, persisted settings, all screens wired |
 | 4 | `d348e6a` | hallmark design pass (Rim, station colourway) on every screen |
-| 5 | final: "feat: Mission Architect playable end-to-end" | focus/keyboard polish, playthroughs, README, this report |
+| 5 | `9eb7d9b` | focus/keyboard polish, playthroughs, README, this report |
+
+## Update: English only, in plain language
+
+After the build, the game was changed to English only, and all of its text was rewritten in plain English for players with limited English.
+
+- **Bangla removed:** the language switch, the Bangla dictionary, the `bn` side of every JSON text, the saved language setting and the Hind Siliguri font. JSON texts are now plain strings. The last bilingual version is commit `9eb7d9b`. The JS bundle shrank from 628 kB to 569 kB (199 kB to 184 kB gzipped).
+- **Plain English:** every UI string and every piece of game content (destinations, rockets, engines, 20 parts, 12 events, levels, launch windows) was rewritten. Sentences are short, words are common, there are no idioms, each idea has one name, and space words are explained the first time ("Delta-v means change in speed").
+  - Readability of all player-facing text: Flesch reading ease 74 → 87 (higher is easier), Flesch-Kincaid grade 4.4 → 2.5, words of 3+ syllables 11.6% → 7.5%, sentences over 15 words 12 → 1 (a list of NASA source names).
+  - Hard part names became plain names, and each description keeps the real term: Robot Probe, Rock Scanner (spectrometer), Quake Sensor (seismometer), Nuclear Battery (RTG), Small and Big Antenna, Backup Computer, Solar Panels, Mini Science Lab. "Propellant" is "fuel" everywhere, and "modules" are "parts".
+  - Sentences no longer put a destination name mid-sentence ("Moon needs…" became "You need…"), so no article ("the Moon") goes missing.
+- **Only text changed.** A script flattened the 219 `{en, bn}` pairs and rewrote the strings, then checked that the JSON structure and every number stayed the same. The engine, balance and scoring are untouched.
+- **Re-verified:** build, the 21 tests and lint all pass. The Playwright playthroughs below were re-run with the new wording (148 steps, all passed, no console errors). They used the same seeds and got the same grades, and confirmed that no Bengali text and no language switch remain.
 
 ## What was built, screen by screen
 
@@ -17,28 +29,29 @@ Screenshots are in `tools/build/`. `phase-0` to `phase-3` show the look before t
 
 | Screen | What it does | Screenshot |
 | --- | --- | --- |
-| Home | Title, Start mission, three difficulty cards (each card's multipliers shown from JSON), EN / বাংলা toggle, How to play and Data & assumptions overlays, best score (localStorage), non-affiliation note | `a-01-home.png`, `m-02-home-phone.png` |
+| Home | Title, Start mission, three level cards (each card's multipliers shown from JSON), How to play and About the numbers overlays, best score (localStorage), non-affiliation note | `a-01-home.png`, `h-01-how-to-play.png`, `m-02-home-phone.png` |
 | Destination | Moon, Mars, Bennu cards: distance (with what it measures), travel time, gravity, delta-v needed for the chosen difficulty, radiation, sunlight, dust storm risk, fun fact | `a-02-destination.png` |
 | Rocket & engine | Four vehicles (capacity, cost, reliability, "in development" flag), four engines (Isp in one line, mass, cost, restrictions), propellant slider with a live delta-v readout | `a-03-vehicle.png` |
 | Spacecraft (builder) | 20 modules in 7 groups with add/remove; summary with 4 budget bars (mass, cost, power, delta-v), capability tallies, the rocket equation filled with the player's own numbers, blocking problems and warnings in plain language, hints (auto on Cadet, on request on Engineer) | `a-04-builder.png`, `phase-4.png`, `b-01-builder-blocked.png`, `m-03-builder-phone.png` |
 | Launch window | Early / Standard / Late cards with an SVG transfer sketch, travel days, delta-v needed vs yours, can / can't make it | `a-05-launch-window.png` |
 | Flight | SVG trajectory with the craft dot driven by motion's `useAnimationFrame`, mission clock in days, leg strip, fuel and safety bars, science and budget, live log; event cards pause the flight and show "What matters here" with the player's real value; 1×/2× speed and Skip to next event; a clean run is 70 s at 1× | `a-06-flight.png`, `a-07-event-card.png`, `c-02-event-card.png`, `m-04-flight-phone.png` |
-| Results | Big grade, score, per-part breakdown bars, a debrief built from this playthrough (each event with the choice made and what the build did, delta-v margin, an engine comparison computed from the rocket equation, window, science, comms, budget), mission log, Fly again / Change design / Home / Copy mission summary | `a-08-results.png`, `c-03-results.png`, `c-04-results-bangla.png`, `m-01-results-phone.png` |
+| Results | Big grade, score, per-part breakdown bars, a debrief built from this playthrough (each event with the choice made and what the build did, delta-v margin, an engine comparison computed from the rocket equation, window, science, comms, budget), mission log, Fly again / Change design / Home / Copy mission summary | `a-08-results.png`, `c-03-results.png`, `m-01-results-phone.png` |
 
-## Playthroughs (Playwright MCP, Phase 5 run: 141 steps, all passed)
+## Playthroughs (Playwright MCP: Phase 5 run, 141 steps; re-run after the English-only change, 148 steps; all passed)
 
-Flights use `?seed=N` so they are reproducible; event choices were made by label, picking the careful option.
+Flights use `?seed=N` so they are reproducible; event choices were made by label, picking the careful option. Names below are the current, plain-English ones.
 
 | Run | Setup | What happened | Result |
 | --- | --- | --- | --- |
-| **a** | Cadet, Moon, Falcon Heavy, cryogenic engine, 32 t propellant, 11 modules (probe core, lander, large solar array, high-gain antenna, spectrometer, drill, HD camera, seismometer, rover, spare parts, one shielding layer); seed 5 | Δv 5.83 vs 5.31 km/s, cost $937M of $2,250M. Events: Micrometeorite strike (not prepared: no redundant computer; ran diagnostics, safety −8, science −1, +6 days), Landing site hazard (not prepared: spare fuel 8.9% under 12%; landed carefully, safety −20, science −2) | **Mission complete, grade A, 79/100** |
-| **b** | Cadet, Moon, Falcon 9, chemical engine, Crew Capsule + Habitat Module, no power, 20 t propellant | Launch blocked, with: "Too heavy: 44.2 t, but Falcon 9 lifts 22.8 t", "Power deficit: using 5.00 kW, generating 0.00 kW", "Not enough delta-v: 1.95 km/s, but Moon needs 5.31 km/s", "Moon missions land: add a Lander"; Continue verified disabled in the DOM; the Cadet hint shows | **Blocked, as intended** |
-| **c** | Commander, Mars, Falcon Heavy, cryogenic engine, 48 t propellant, 13 modules (adds RTG, battery bank, redundant computer); seed 3 | Δv 7.06 vs 6.62 km/s, cost $1,117M of $1,125M. **5 events:** Solar flare (prepared, protection 8: safety −3), Comms blackout (prepared, high-gain antenna: +3 days), Landing site hazard (not prepared: landed carefully, safety −20, science −2), Discovery opportunity (prepared: stayed on plan), Equipment failure (prepared, spare parts: +2 days) | **Mission complete, grade C, 60/100** (Commander's C is 58+; almost no budget left, so 0 budget points) |
+| **a** | Cadet, Moon, Falcon Heavy, Advanced chemical engine, 32 t fuel, 11 parts (Robot Probe, Lander, Large Solar Panels, Big Antenna, Rock Scanner, Drill, HD Cameras, Quake Sensor, Rover, Spare Parts Kit, one Radiation Shield); seed 5 | Delta-v 5.83 vs 5.31 km/s, cost $937M of $2,250M. Events: Hit by space dust (not ready: no Backup Computer; stopped and checked everything, safety −8, science −1, +6 days), Danger at the landing site (not ready: spare fuel 8.9%, under 12%; landed carefully, safety −20, science −2) | **Mission complete, grade A, 79/100** |
+| **b** | Cadet, Moon, Falcon 9, Basic chemical engine, Crew Capsule + Habitat, no power, 20 t fuel | Launch blocked under "You cannot launch yet": "Too heavy. Your spacecraft is 44.2 t. Falcon 9 can lift only 22.8 t.", "Not enough power. You use 5.00 kW but make only 0.00 kW.", "Not enough delta-v. You have 1.95 km/s. You need 5.31 km/s.", "This mission must land. Add a Lander."; Continue verified disabled in the DOM; the Cadet hint shows | **Blocked, as intended** |
+| **c** | Commander, Mars, Falcon Heavy, Advanced chemical engine, 48 t fuel, 13 parts (adds Nuclear Battery, Extra Batteries, Backup Computer); seed 3 | Delta-v 7.06 vs 6.62 km/s, cost $1,117M of $1,125M. **5 events:** Solar flare! (ready, protection 8: safety −3), Radio contact lost (ready, Big Antenna: +3 days), Danger at the landing site (not ready: landed carefully, safety −20, science −2), A chance to discover something (ready: kept to the plan), A part broke (ready, Spare Parts Kit: +2 days) | **Mission complete, grade C, 60/100** (Commander's C is 58+; almost no budget left, so 0 budget points) |
 
 The same run also checked:
-- Results in Bangla (`c-04-results-bangla.png`).
+- English only: no Bengali text, no language switch and `lang="en"` on the home and both results screens.
+- The How to play (`h-01-how-to-play.png`) and About the numbers dialogs show the plain-English text.
 - No horizontal scroll at 390 px on all seven screens, each one confirmed by its title.
-- A keyboard-only path: Tab reaches Start mission with a solid focus outline, Enter starts, Tab plus Space selects a destination card.
+- A keyboard-only path: the first Tab reaches Start mission with a solid focus outline, Enter starts, Tab plus Space selects a destination card.
 
 Balance, from the engine over 200 seeded flights each:
 - Careful Cadet Moon flights pass 100% of the time (average 87).
@@ -48,7 +61,7 @@ Balance, from the engine over 200 seeded flights each:
 ## Verification summary
 
 - `npm run build` passes (`tsc -b` + Vite). There are no `any` types, `@ts-ignore` or `@ts-expect-error` anywhere in `src/`.
-- `npm test`: 21 vitest tests pass. They cover the engine (rocket equation and its inverse, totals and solar scaling, every launch rule, seeded determinism, event conditions, completion rates, score parts) and data integrity (the brief's values, sources, 20 modules, 12 events, both languages having the same keys).
+- `npm test`: 21 vitest tests pass. They cover the engine (rocket equation and its inverse, totals and solar scaling, every launch rule, seeded determinism, event conditions, completion rates, score parts) and data integrity (the brief's values, sources, 20 modules, 12 events, every UI string filled in).
 - `npm run lint` (oxlint) shows no warnings in game code. The three left are fast-refresh notes in the generated shadcn files.
 - **Console errors: none in any Playwright MCP run.** Every phase run ended by checking `browser_console_messages` and found 0 errors.
 - hallmark sweep (`sloplint --scope app --render`, five screens): **0 FAIL, 0 REFLEX, 0 WARN**, with gate 39b waived on the record and F18 answered. The builder went from 43 FAIL / 59 REFLEX to 0 / 0, keeping every link, handler, heading and figure. The fresh-context finish review returned "fix" with 8 findings, all fixed. Before/after: `.hallmark/compare.html`.
@@ -79,12 +92,12 @@ Balance, from the engine over 200 seeded flights each:
   - in a dust storm only 30% of solar output remains;
   - vehicle reliability sets the chance of a launch anomaly;
   - each destination has a science target (16 / 20 / 12).
-- **Module simplifications:** one lander module serves crewed and robotic missions. Rovers, drills and seismometers still count at Bennu even though nothing lands there.
+- **Part simplifications:** one Lander serves crewed and robotic missions. The Rover, Drill and Quake Sensor still count at Bennu even though nothing lands there.
 - **Costs and reliabilities:** rounded public prices or game estimates. Starship's $250M and 100 t are planning values. SLS's $2.2B makes it unaffordable on purpose.
-- **Shielding:** "Radiation Shielding (light/heavy)" is one module you can add twice (one layer is light, two is heavy), which keeps the catalogue at 20 modules.
+- **Shielding:** the Radiation Shield is one part you can add twice (one layer is light, two is heavy), which keeps the catalogue at 20 parts.
 
 **Product and code**
-- **Bangla text** was written for this build. No `TODO(i18n)` markers were needed, but a native-speaker review of the event and debrief text is worth doing before judging.
+- **Plain English.** All text was rewritten for players with limited English (see the update at the top). A read-through by an English teacher, or a test with a few young players, would still catch words that are too hard.
 - **The design pass was a restyle.** The builder keeps its two-column catalogue, which is the weakest point in the critique. A full redesign of that layout is a possible next pass.
 - **Unused shadcn parts:** Card, Tabs, Progress and Tooltip (apart from its provider) are left over from setup. They were made Floor-clean but aren't used.
 - **Bundle size:** 628 kB JS (199 kB gzipped) triggers Vite's chunk-size notice. Fine for a static game; it could be split later.
@@ -120,4 +133,4 @@ Screens use the URL hash, so no server rewrite rules are needed on any host.
 
 ## Confirmation
 
-The game is playable end to end: home → destination → rocket and engine → builder → launch window → animated flight with event cards → results with debrief, in English and Bangla, on desktop and phone width, by mouse or keyboard. No console errors appeared in any Playwright run.
+The game is playable end to end: home → destination → rocket and engine → builder → launch window → animated flight with event cards → results with debrief, in plain English, on desktop and phone width, by mouse or keyboard. No console errors appeared in any Playwright run.

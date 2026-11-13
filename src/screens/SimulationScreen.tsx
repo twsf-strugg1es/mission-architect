@@ -40,7 +40,7 @@ function craftAt(ctx: MissionContext, leg: number, frac: number) {
 
 export function SimulationScreen() {
   const i18n = useI18n()
-  const { t, tx, n, money } = i18n
+  const { t, n, money } = i18n
   const { build, difficultyId, windowId, seed, mission, setMission, finishMission } = useGame()
   const ctx = useMemo(() => createContext(build, difficultyId, windowId), [build, difficultyId, windowId])
   const reduceMotion = useReducedMotion()
@@ -109,7 +109,7 @@ export function SimulationScreen() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 id="screen-title" tabIndex={-1} className="max-w-none text-2xl font-medium outline-none sm:text-3xl">
-            {t('sim.title')}: {tx(ctx.destination.name)}
+            {t('sim.title')}: {ctx.destination.name}
           </h1>
           <p className="font-mono text-4xl tabular-nums" aria-live="off">
             {t('sim.day', { d: n(Math.floor(shownDay)) })}
@@ -156,7 +156,7 @@ export function SimulationScreen() {
       </ol>
 
       <div className="overflow-hidden border border-rule bg-paper-3">
-        <svg viewBox="0 0 800 260" role="img" aria-label={t('sim.trajectory', { dest: tx(ctx.destination.name) })} className="h-auto w-full">
+        <svg viewBox="0 0 800 260" role="img" aria-label={t('sim.trajectory', { dest: ctx.destination.name })} className="h-auto w-full">
           <path
             d={`M ${EARTH.x} ${EARTH.y} Q ${CTRL.x} ${CTRL.y} ${DEST.x} ${DEST.y}`}
             fill="none"

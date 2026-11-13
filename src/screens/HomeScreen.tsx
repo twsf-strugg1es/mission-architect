@@ -10,7 +10,7 @@ import type { HintMode } from '@/game/types'
 const HINTS: Record<HintMode, DictKey> = { on: 'diff.hints.on', onDemand: 'diff.hints.onDemand', off: 'diff.hints.off' }
 
 export function HomeScreen() {
-  const { t, tx, n } = useI18n()
+  const { t, n } = useI18n()
   const { difficultyId, setDifficulty, startNewMission, setOverlay, best } = useGame()
 
   return (
@@ -43,8 +43,8 @@ export function HomeScreen() {
             const [min, max] = d.eventCount
             return (
               <ChoiceCard key={d.id} selected={d.id === difficultyId} onSelect={() => setDifficulty(d.id)} selectedLabel={t('common.selected')}>
-                <span className="text-xl font-medium">{tx(d.name)}</span>
-                <span className="text-sm text-ink-3">{tx(d.description)}</span>
+                <span className="text-xl font-medium">{d.name}</span>
+                <span className="text-sm text-ink-3">{d.description}</span>
                 <ul className="mt-auto space-y-0.5 text-sm tabular-nums">
                   <li>{t('diff.budget', { x: n(d.budgetMultiplier, 2) })}</li>
                   <li>{t('diff.deltaV', { x: n(d.deltaVMultiplier, 2) })}</li>
@@ -62,7 +62,7 @@ export function HomeScreen() {
         <span className="font-medium">{t('home.best')}:</span>
         <span className="tabular-nums">
           {best
-            ? t('home.bestValue', { score: best.score, grade: best.grade, dest: tx(byId(DESTINATIONS, best.destinationId).name) })
+            ? t('home.bestValue', { score: best.score, grade: best.grade, dest: byId(DESTINATIONS, best.destinationId).name })
             : t('home.noBest')}
         </span>
       </p>

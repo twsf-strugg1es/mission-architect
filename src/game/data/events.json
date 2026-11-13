@@ -12,55 +12,55 @@
   "events": [
     {
       "id": "launch-anomaly",
-      "title": { "en": "Launch anomaly", "bn": "উৎক্ষেপণে গোলযোগ" },
-      "text": { "en": "One of the rocket's engines shuts down early during ascent. The guidance computer has seconds to re-plan.", "bn": "ওপরে ওঠার সময় রকেটের একটি ইঞ্জিন আগেভাগে বন্ধ হয়ে গেছে। গাইডেন্স কম্পিউটারের হাতে নতুন পরিকল্পনার জন্য মাত্র কয়েক সেকেন্ড।" },
+      "title": "Problem during launch",
+      "text": "One rocket engine stops too early on the way up. The computer has only seconds to make a new plan.",
       "condition": { "legs": ["launch"] },
       "weight": 1,
       "weightBy": "launchRisk",
       "check": { "anyModule": ["redundant-computer"] },
-      "checkLabel": { "en": "A Redundant Flight Computer on board", "bn": "অতিরিক্ত ফ্লাইট কম্পিউটার থাকা" },
-      "debriefPrepared": { "en": "Your redundant flight computer turned a launch anomaly into a quick re-plan.", "bn": "অতিরিক্ত ফ্লাইট কম্পিউটার উৎক্ষেপণের গোলযোগকে দ্রুত নতুন পরিকল্পনায় সামলে নিয়েছে।" },
-      "debriefUnprepared": { "en": "Without a redundant flight computer, the launch anomaly cost you safety or fuel.", "bn": "অতিরিক্ত ফ্লাইট কম্পিউটার না থাকায় উৎক্ষেপণের গোলযোগে নিরাপত্তা বা জ্বালানি খরচ হয়েছে।" },
+      "checkLabel": "A Backup Computer on board",
+      "debriefPrepared": "Your Backup Computer made a quick new plan when the launch went wrong.",
+      "debriefUnprepared": "You had no Backup Computer, so the launch problem cost you safety or fuel.",
       "choices": [
         {
           "id": "replan",
-          "label": { "en": "Let the computer re-plan the ascent", "bn": "কম্পিউটারকে নতুন করে পথ ঠিক করতে দিন" },
+          "label": "Let the computer make a new plan",
           "effect": { "scienceDelta": 0, "safetyDelta": -15, "fuelDeltaPercent": -6, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "A single computer re-planned slowly; the long burn shook the stack and ate into your propellant.", "bn": "একটিমাত্র কম্পিউটার ধীরে পরিকল্পনা করেছে; দীর্ঘ জ্বালানো ঝাঁকুনি দিয়েছে আর জ্বালানি খেয়েছে।" },
+          "outcome": "With only one computer, the new plan was slow. The long engine burn shook the spacecraft and used extra fuel.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -2, "fuelDeltaPercent": -3, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The backup computer re-planned in milliseconds, the way modern rockets survive losing an engine.", "bn": "ব্যাকআপ কম্পিউটার মিলিসেকেন্ডে নতুন পথ ঠিক করেছে, যেভাবে আধুনিক রকেট একটি ইঞ্জিন হারিয়েও টিকে যায়।" }
+          "preparedOutcome": "The Backup Computer made a new plan in less than a second. This is how modern rockets survive when an engine stops."
         },
         {
           "id": "abort",
-          "label": { "en": "Abort to a lower orbit and recover", "bn": "নিচু কক্ষপথে থেমে পরিস্থিতি সামলান" },
+          "label": "Stop in a lower orbit, then climb back up",
           "effect": { "scienceDelta": 0, "safetyDelta": -4, "fuelDeltaPercent": -10, "budgetDelta": 0, "timeDeltaDays": 3 },
-          "outcome": { "en": "You saved the spacecraft, but climbing back to the planned orbit cost your own propellant.", "bn": "মহাকাশযান বেঁচেছে, কিন্তু পরিকল্পিত কক্ষপথে ফিরতে নিজের জ্বালানি খরচ হয়েছে।" }
+          "outcome": "You saved the spacecraft. But climbing back to the right orbit used your own fuel."
         }
       ],
       "source": "Game scenario: engine-out during ascent. Its chance grows as the launch vehicle's reliability falls."
     },
     {
       "id": "political-review",
-      "title": { "en": "Nuclear launch review", "bn": "পারমাণবিক উৎক্ষেপণ পর্যালোচনা" },
-      "text": { "en": "Public concern about launching a nuclear reactor triggers an extra safety review just before launch.", "bn": "চুল্লি উৎক্ষেপণ নিয়ে জনমনে উদ্বেগ, তাই উৎক্ষেপণের ঠিক আগে বাড়তি নিরাপত্তা পর্যালোচনা।" },
+      "title": "Nuclear safety review",
+      "text": "People are worried about launching a nuclear reactor. So there is an extra safety review just before launch.",
       "condition": { "legs": ["launch"], "engines": ["nuclear-thermal"] },
       "weight": 4,
       "check": null,
       "checkLabel": null,
       "debriefPrepared": null,
-      "debriefUnprepared": { "en": "Choosing nuclear thermal propulsion added a political review to your mission.", "bn": "নিউক্লিয়ার থার্মাল ইঞ্জিন বেছে নেওয়ায় মিশনে রাজনৈতিক পর্যালোচনা যোগ হয়েছে।" },
+      "debriefUnprepared": "You chose a Nuclear engine, so your mission needed an extra safety review.",
       "choices": [
         {
           "id": "full-review",
-          "label": { "en": "Delay for a full public review", "bn": "পূর্ণ জনপর্যালোচনার জন্য দেরি করুন" },
+          "label": "Wait for a full public review",
           "effect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": -60, "timeDeltaDays": 45 },
-          "outcome": { "en": "Reviews take time and money, but public trust matters for nuclear missions.", "bn": "পর্যালোচনায় সময় ও টাকা লাগে, কিন্তু পারমাণবিক মিশনে জনগণের আস্থা জরুরি।" }
+          "outcome": "The review cost time and money. But public trust is important for nuclear missions."
         },
         {
           "id": "safeguards",
-          "label": { "en": "Pay for extra safeguards and launch on time", "bn": "বাড়তি সুরক্ষায় টাকা দিয়ে সময়মতো উৎক্ষেপণ করুন" },
+          "label": "Pay for extra safety and launch on time",
           "effect": { "scienceDelta": 0, "safetyDelta": -3, "fuelDeltaPercent": 0, "budgetDelta": -150, "timeDeltaDays": 0 },
-          "outcome": { "en": "Extra containment tests were expensive, and the rushed schedule added a little risk.", "bn": "বাড়তি সুরক্ষা পরীক্ষা ব্যয়বহুল ছিল, আর তাড়াহুড়োয় ঝুঁকি একটু বেড়েছে।" }
+          "outcome": "The extra safety tests were expensive. Rushing also added a little risk."
         }
       ],
       "source": "Game scenario: nuclear launches go through extra safety and public review.",
@@ -68,31 +68,31 @@
     },
     {
       "id": "solar-flare",
-      "title": { "en": "Solar flare!", "bn": "সৌর শিখা!" },
-      "text": { "en": "Space-weather forecasters see an X-class flare. A storm of energetic protons will reach you within the hour.", "bn": "মহাকাশ-আবহাওয়ার পূর্বাভাসে X-শ্রেণির সৌর শিখা ধরা পড়েছে। এক ঘণ্টার মধ্যে শক্তিশালী প্রোটনের ঝড় আপনার কাছে পৌঁছাবে।" },
+      "title": "Solar flare!",
+      "text": "Scientists see a huge burst of energy from the Sun. A storm of radiation will reach you in less than an hour.",
       "condition": { "legs": ["transit", "return"] },
       "weight": 1.5,
       "weightBy": "radiationLevel",
       "check": { "stat": "protection", "atLeast": 6 },
-      "checkLabel": { "en": "Radiation protection of 6 or more", "bn": "বিকিরণ সুরক্ষা ৬ বা তার বেশি" },
-      "debriefPrepared": { "en": "Heavy shielding turned the solar flare into a non-event.", "bn": "ভারী সুরক্ষা সৌর শিখাকে প্রায় নিরীহ করে দিয়েছে।" },
-      "debriefUnprepared": { "en": "The solar flare hit hard: more radiation protection would have blunted it.", "bn": "সৌর শিখা জোরে আঘাত করেছে: বেশি বিকিরণ সুরক্ষা থাকলে ধাক্কা কম লাগত।" },
+      "checkLabel": "Radiation protection: 6 or more",
+      "debriefPrepared": "Strong radiation protection kept you safe from the solar flare.",
+      "debriefUnprepared": "The solar flare hurt you. More radiation protection would make it weaker.",
       "choices": [
         {
           "id": "turn-shield",
-          "label": { "en": "Turn the shielded side toward the Sun", "bn": "সুরক্ষিত দিকটা সূর্যের দিকে ঘোরান" },
+          "label": "Point your shield at the Sun",
           "effect": { "scienceDelta": -1, "safetyDelta": -20, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Your thin shielding let protons through; crew and electronics took a dose.", "bn": "পাতলা সুরক্ষা ভেদ করে প্রোটন ঢুকেছে; ক্রু ও যন্ত্রপাতি বিকিরণ পেয়েছে।" },
+          "outcome": "Your protection was too weak. Radiation got through and hit the spacecraft.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -3, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The heavy shielding soaked up the proton storm.", "bn": "ভারী সুরক্ষা প্রোটনের ঝড় শুষে নিয়েছে।" }
+          "preparedOutcome": "Your strong protection stopped the radiation storm."
         },
         {
           "id": "power-down",
-          "label": { "en": "Power down the instruments and ride it out", "bn": "যন্ত্রগুলো বন্ধ করে ঝড় পার হতে দিন" },
+          "label": "Turn off the instruments and wait",
           "effect": { "scienceDelta": -3, "safetyDelta": -10, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Switching off protected the electronics, but you lost observing time and still took a dose.", "bn": "যন্ত্র বন্ধ করায় ইলেকট্রনিক্স বেঁচেছে, কিন্তু পর্যবেক্ষণের সময় গেছে আর কিছু বিকিরণও লেগেছে।" },
+          "outcome": "Turning things off protected the electronics. But you lost science time, and some radiation still got through.",
           "preparedEffect": { "scienceDelta": -2, "safetyDelta": -1, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "Behind good shielding, a short power-down was all it took.", "bn": "ভালো সুরক্ষার আড়ালে অল্প সময়ের জন্য যন্ত্র বন্ধ রাখাই যথেষ্ট ছিল।" }
+          "preparedOutcome": "With good protection, you only needed to turn things off for a short time."
         }
       ],
       "source": "Inspired by NASA DONKI space-weather records of solar flares (FLR) and solar energetic particle (SEP) events.",
@@ -100,28 +100,28 @@
     },
     {
       "id": "cosmic-rays",
-      "title": { "en": "Cosmic-ray dose climbing", "bn": "মহাজাগতিক রশ্মির মাত্রা বাড়ছে" },
-      "text": { "en": "Galactic cosmic rays, atomic nuclei from distant exploding stars, keep raising the crew's radiation dose on this long trip.", "bn": "দূরের বিস্ফোরিত তারা থেকে আসা মহাজাগতিক রশ্মি এই দীর্ঘ যাত্রায় ক্রুর বিকিরণ মাত্রা বাড়িয়েই চলেছে।" },
+      "title": "Radiation is building up",
+      "text": "On this long trip, cosmic rays keep hitting the crew. Cosmic rays are tiny particles from exploding stars far away.",
       "condition": { "legs": ["transit", "return"], "crewed": true, "destinations": ["mars", "bennu"], "missingModules": ["radiation-shielding"] },
       "weight": 1.2,
       "check": { "anyModule": ["habitat"] },
-      "checkLabel": { "en": "A Habitat Module (its water and supplies add shielding)", "bn": "হ্যাবিটাট মডিউল (এর পানি ও রসদ বাড়তি সুরক্ষা দেয়)" },
-      "debriefPrepared": { "en": "Your habitat's water and supplies doubled as cosmic-ray shielding.", "bn": "হ্যাবিটাটের পানি ও রসদ মহাজাগতিক রশ্মির বিরুদ্ধে বাড়তি সুরক্ষা দিয়েছে।" },
-      "debriefUnprepared": { "en": "Flying a crew through deep space without shielding raised their radiation dose.", "bn": "সুরক্ষা ছাড়া ক্রু নিয়ে গভীর মহাকাশে ওড়ায় তাদের বিকিরণ মাত্রা বেড়েছে।" },
+      "checkLabel": "A Habitat (its water and food also block radiation)",
+      "debriefPrepared": "The water and food in your Habitat also blocked cosmic rays.",
+      "debriefUnprepared": "Your crew flew through deep space with no Radiation Shield. They got more radiation.",
       "choices": [
         {
           "id": "stack-supplies",
-          "label": { "en": "Build a shelter from water and food stores", "bn": "পানি ও খাবারের মজুত দিয়ে আশ্রয় বানান" },
+          "label": "Build a shelter from water and food",
           "effect": { "scienceDelta": 0, "safetyDelta": -8, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Water is good shielding, but you had little to stack.", "bn": "পানি ভালো সুরক্ষা দেয়, কিন্তু সাজানোর মতো মজুত কম ছিল।" },
+          "outcome": "Water blocks radiation well. But you did not have much water.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -2, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The habitat's water tanks made an excellent shelter.", "bn": "হ্যাবিটাটের পানির ট্যাংক চমৎকার আশ্রয় হয়েছে।" }
+          "preparedOutcome": "The water tanks in your Habitat made a very good shelter."
         },
         {
           "id": "faster-path",
-          "label": { "en": "Burn extra fuel for a faster trajectory", "bn": "বাড়তি জ্বালানি পুড়িয়ে দ্রুততর পথে যান" },
+          "label": "Use extra fuel to fly faster",
           "effect": { "scienceDelta": 0, "safetyDelta": -3, "fuelDeltaPercent": -7, "budgetDelta": 0, "timeDeltaDays": -20 },
-          "outcome": { "en": "Less time in deep space means a smaller dose, paid for in propellant.", "bn": "গভীর মহাকাশে কম সময় মানে কম বিকিরণ, তবে দাম দিতে হয়েছে জ্বালানিতে।" }
+          "outcome": "Less time in deep space means less radiation. But it cost fuel."
         }
       ],
       "source": "Space-radiation exposure reasoning informed by NASA OSDR (incl. RadLab) data.",
@@ -129,30 +129,30 @@
     },
     {
       "id": "micrometeorite",
-      "title": { "en": "Micrometeorite strike", "bn": "ক্ষুদ্র উল্কার আঘাত" },
-      "text": { "en": "A dust grain travelling at about 20 km/s punches through the outer hull and damages a flight-computer board.", "bn": "প্রায় ২০ কিমি/সে বেগে ছুটে আসা এক ধূলিকণা বাইরের খোল ফুটো করে ফ্লাইট কম্পিউটারের একটি বোর্ড নষ্ট করেছে।" },
+      "title": "Hit by space dust",
+      "text": "A tiny piece of space dust hits you at about 20 km/s. It goes through the outer wall and damages the flight computer.",
       "condition": { "legs": ["transit"] },
       "weight": 1,
       "check": { "anyModule": ["redundant-computer"] },
-      "checkLabel": { "en": "A Redundant Flight Computer on board", "bn": "অতিরিক্ত ফ্লাইট কম্পিউটার থাকা" },
-      "debriefPrepared": { "en": "Redundancy made the micrometeorite strike a non-issue.", "bn": "অতিরিক্ত কম্পিউটার থাকায় ক্ষুদ্র উল্কার আঘাত কোনো সমস্যাই হয়নি।" },
-      "debriefUnprepared": { "en": "Without a backup computer, a single micrometeorite strike hurt your safety.", "bn": "ব্যাকআপ কম্পিউটার না থাকায় একটিমাত্র ক্ষুদ্র উল্কার আঘাতেই নিরাপত্তা কমেছে।" },
+      "checkLabel": "A Backup Computer on board",
+      "debriefPrepared": "Your Backup Computer took over after the space dust hit.",
+      "debriefUnprepared": "You had no Backup Computer, so one hit from space dust hurt your safety.",
       "choices": [
         {
           "id": "switch-backup",
-          "label": { "en": "Switch to backup systems and keep flying", "bn": "ব্যাকআপ ব্যবস্থায় চলে গিয়ে উড়তে থাকুন" },
+          "label": "Switch to backup and keep flying",
           "effect": { "scienceDelta": 0, "safetyDelta": -18, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "There was no real backup, so you flew on damaged electronics.", "bn": "সত্যিকারের ব্যাকআপ ছিল না, তাই নষ্ট ইলেকট্রনিক্স নিয়েই উড়তে হয়েছে।" },
+          "outcome": "You had no real backup. You flew on with damaged electronics.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -2, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The redundant computer took over in milliseconds.", "bn": "অতিরিক্ত কম্পিউটার মিলিসেকেন্ডে দায়িত্ব নিয়েছে।" }
+          "preparedOutcome": "The Backup Computer took over at once."
         },
         {
           "id": "diagnostics",
-          "label": { "en": "Stop and run full diagnostics", "bn": "থেমে পুরো পরীক্ষা চালান" },
+          "label": "Stop and check everything",
           "effect": { "scienceDelta": -1, "safetyDelta": -8, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 6 },
-          "outcome": { "en": "Diagnostics took days, and the damage still hurt.", "bn": "পরীক্ষায় কয়েক দিন লেগেছে, তবু ক্ষতি থেকে গেছে।" },
+          "outcome": "The checks took days, and the damage still hurt.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 2 },
-          "preparedOutcome": { "en": "Diagnostics confirmed the backup computer is healthy.", "bn": "পরীক্ষায় নিশ্চিত হয়েছে যে ব্যাকআপ কম্পিউটার ঠিক আছে।" }
+          "preparedOutcome": "The checks showed that the Backup Computer works well."
         }
       ],
       "source": "NASA Orbital Debris Program Office: micrometeoroid and debris environment.",
@@ -160,58 +160,58 @@
     },
     {
       "id": "comms-blackout",
-      "title": { "en": "Comms blackout", "bn": "যোগাযোগ বিচ্ছিন্ন" },
-      "text": { "en": "The Sun slips between Earth and your spacecraft (solar conjunction). Your radio signal fades into solar noise.", "bn": "সূর্য পৃথিবী আর আপনার মহাকাশযানের মাঝখানে চলে এসেছে (সৌর সংযোগ)। রেডিও সংকেত সূর্যের গোলমালে হারিয়ে যাচ্ছে।" },
+      "title": "Radio contact lost",
+      "text": "The Sun moves between Earth and your spacecraft. Noise from the Sun blocks your radio signal.",
       "condition": { "legs": ["transit", "arrival"] },
       "weight": 1,
       "check": { "anyModule": ["high-gain-antenna"] },
-      "checkLabel": { "en": "A High-Gain Antenna on board", "bn": "হাই-গেইন অ্যান্টেনা থাকা" },
-      "debriefPrepared": { "en": "The high-gain antenna held your link through the blackout.", "bn": "হাই-গেইন অ্যান্টেনা বিচ্ছিন্নতার মধ্যেও যোগাযোগ ধরে রেখেছে।" },
-      "debriefUnprepared": { "en": "A weak radio left you out of contact during the blackout.", "bn": "দুর্বল রেডিওর কারণে বিচ্ছিন্নতার সময় যোগাযোগ ছিল না।" },
+      "checkLabel": "A Big Antenna on board",
+      "debriefPrepared": "Your Big Antenna kept in contact with Earth.",
+      "debriefUnprepared": "Your weak radio lost contact with Earth.",
       "choices": [
         {
           "id": "wait",
-          "label": { "en": "Hold position and wait for the link", "bn": "অবস্থান ধরে যোগাযোগের অপেক্ষা করুন" },
+          "label": "Stay where you are and wait for contact",
           "effect": { "scienceDelta": -2, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 10 },
-          "outcome": { "en": "Your weak radio needed a long, quiet wait; observations piled up unsent.", "bn": "দুর্বল রেডিওর জন্য দীর্ঘ অপেক্ষা; পর্যবেক্ষণের তথ্য না-পাঠানো অবস্থায় জমে গেছে।" },
+          "outcome": "Your weak radio needed a long wait. Your science data could not be sent.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 3 },
-          "preparedOutcome": { "en": "The big dish punched through the noise again within days.", "bn": "বড় ডিশটি কয়েক দিনের মধ্যেই গোলমাল ভেদ করে যোগাযোগ ফিরিয়েছে।" }
+          "preparedOutcome": "Your Big Antenna got through the noise again in a few days."
         },
         {
           "id": "autonomous",
-          "label": { "en": "Fly on autopilot until contact returns", "bn": "যোগাযোগ না ফেরা পর্যন্ত অটোপাইলটে চলুন" },
+          "label": "Fly on autopilot until contact comes back",
           "effect": { "scienceDelta": 0, "safetyDelta": -10, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Flying blind without checks from Earth led to a navigation error.", "bn": "পৃথিবীর তদারকি ছাড়া চলায় পথ নির্ণয়ে ভুল হয়েছে।" },
+          "outcome": "Without help from Earth, you flew a little in the wrong direction.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -3, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "Strong links before and after kept the autopilot on course.", "bn": "আগে-পরে শক্তিশালী যোগাযোগ থাকায় অটোপাইলট সঠিক পথে ছিল।" }
+          "preparedOutcome": "Good contact before and after kept the autopilot on the right path."
         }
       ],
       "source": "Game scenario based on how Mars missions pause commanding during solar conjunction."
     },
     {
       "id": "equipment-failure",
-      "title": { "en": "Equipment failure", "bn": "যন্ত্র বিকল" },
-      "text": { "en": "A reaction wheel that points the spacecraft starts grinding, then stalls.", "bn": "মহাকাশযানের দিক ঠিক রাখার একটি রিঅ্যাকশন হুইল ঘষা খেতে খেতে থেমে গেছে।" },
+      "title": "A part broke",
+      "text": "A reaction wheel stops working. This spinning wheel turns the spacecraft to face the right way.",
       "condition": { "legs": ["transit", "surface"] },
       "weight": 1,
       "check": { "anyModule": ["spare-parts"] },
-      "checkLabel": { "en": "A Spare Parts Kit on board", "bn": "স্পেয়ার পার্টস কিট থাকা" },
-      "debriefPrepared": { "en": "Packing spare parts turned the equipment failure into a quick fix.", "bn": "স্পেয়ার পার্টস সঙ্গে থাকায় যন্ত্র বিকল দ্রুত সারানো গেছে।" },
-      "debriefUnprepared": { "en": "Flying without spare parts made the equipment failure costly.", "bn": "স্পেয়ার পার্টস ছাড়া ওড়ায় যন্ত্র বিকল হওয়াটা ব্যয়বহুল হয়েছে।" },
+      "checkLabel": "A Spare Parts Kit on board",
+      "debriefPrepared": "You had a Spare Parts Kit, so the broken part was quick to fix.",
+      "debriefUnprepared": "You had no spare parts, so the broken part cost you a lot.",
       "choices": [
         {
           "id": "repair",
-          "label": { "en": "Repair the wheel", "bn": "হুইল মেরামত করুন" },
+          "label": "Fix the wheel",
           "effect": { "scienceDelta": -2, "safetyDelta": -10, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 8 },
-          "outcome": { "en": "Improvised repairs took days and never fully worked.", "bn": "জোড়াতালির মেরামতে কয়েক দিন লেগেছে, পুরোপুরি ঠিকও হয়নি।" },
+          "outcome": "With no spare parts, the repair took days and did not fully work.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 2 },
-          "preparedOutcome": { "en": "The kit had a replacement wheel ready to swap in.", "bn": "কিটে একটি বদলি হুইল তৈরিই ছিল।" }
+          "preparedOutcome": "The kit had a new wheel. You changed it quickly."
         },
         {
           "id": "thrusters",
-          "label": { "en": "Point the craft with thrusters instead", "bn": "বদলে থ্রাস্টার দিয়ে দিক ঠিক রাখুন" },
+          "label": "Turn the spacecraft with small rocket jets",
           "effect": { "scienceDelta": -2, "safetyDelta": 0, "fuelDeltaPercent": -6, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Thrusters can point the craft but burn propellant, as NASA's Dawn did after its wheels failed.", "bn": "থ্রাস্টার দিয়ে দিক ঠিক রাখা যায় কিন্তু জ্বালানি পোড়ে, যেমনটা নাসার ডন হুইল বিকল হওয়ার পর করেছিল।" }
+          "outcome": "Small rocket jets can turn the spacecraft, but they use fuel. NASA's Dawn spacecraft did this after its wheels broke."
         }
       ],
       "source": "Reaction-wheel failures happened on NASA's Dawn and Kepler missions.",
@@ -219,56 +219,56 @@
     },
     {
       "id": "crew-illness",
-      "title": { "en": "Crew member ill", "bn": "ক্রু সদস্য অসুস্থ" },
-      "text": { "en": "An astronaut has a fever and dizziness. The flight surgeon on Earth is minutes away by radio.", "bn": "একজন নভোচারীর জ্বর আর মাথা ঘোরা। পৃথিবীর ফ্লাইট সার্জন রেডিওতে কয়েক মিনিট দূরে।" },
+      "title": "An astronaut is sick",
+      "text": "An astronaut has a fever and feels dizzy. A doctor on Earth can help by radio.",
       "condition": { "legs": ["transit", "surface"], "crewed": true },
       "weight": 1,
       "check": { "stat": "crewSupport", "atLeast": 7 },
-      "checkLabel": { "en": "Crew support of 7 or more", "bn": "ক্রু সহায়তা ৭ বা তার বেশি" },
-      "debriefPrepared": { "en": "Strong crew support (medical bay and supplies) handled the illness on board.", "bn": "ভালো ক্রু সহায়তা (চিকিৎসা কক্ষ ও রসদ) অসুস্থতা সামলে নিয়েছে।" },
-      "debriefUnprepared": { "en": "Limited crew support made a simple illness a real threat.", "bn": "সীমিত ক্রু সহায়তায় সাধারণ অসুস্থতাও গুরুতর ঝুঁকি হয়ে উঠেছে।" },
+      "checkLabel": "Crew care: 7 or more",
+      "debriefPrepared": "Good crew care, with a medical room and supplies, helped the sick astronaut.",
+      "debriefUnprepared": "With little crew care, a simple illness became dangerous.",
       "choices": [
         {
           "id": "treat",
-          "label": { "en": "Treat them on board", "bn": "যানের ভেতরেই চিকিৎসা করুন" },
+          "label": "Treat the astronaut on board",
           "effect": { "scienceDelta": 0, "safetyDelta": -12, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "With few medical supplies, recovery was slow and risky.", "bn": "চিকিৎসা সামগ্রী কম থাকায় সেরে উঠতে সময় লেগেছে, ঝুঁকিও ছিল।" },
+          "outcome": "You had few medical supplies. The astronaut got better slowly, and it was risky.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": -2, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The medical bay had what was needed; they were back on duty within days.", "bn": "চিকিৎসা কক্ষে প্রয়োজনীয় সবই ছিল; কয়েক দিনেই আবার কাজে ফিরেছেন।" }
+          "preparedOutcome": "The medical room had everything needed. The astronaut was back at work in a few days."
         },
         {
           "id": "cut-short",
-          "label": { "en": "Cut the mission short", "bn": "মিশন সংক্ষেপ করুন" },
+          "label": "End the mission early",
           "effect": { "scienceDelta": -4, "safetyDelta": -2, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": -15 },
-          "outcome": { "en": "Everyone came home sooner, but planned science was dropped.", "bn": "সবাই আগেভাগে ফিরেছে, কিন্তু পরিকল্পিত বিজ্ঞানের কাজ বাদ পড়েছে।" }
+          "outcome": "Everyone came home sooner. But you lost some of the planned science."
         }
       ],
       "source": "Game scenario based on crew health planning for long missions."
     },
     {
       "id": "landing-hazard",
-      "title": { "en": "Landing site hazard", "bn": "অবতরণস্থলে বিপদ" },
-      "text": { "en": "During descent, the camera shows boulders where the map showed flat ground.", "bn": "নামার সময় ক্যামেরায় দেখা যাচ্ছে, মানচিত্রে যেখানে সমতল ছিল সেখানে বড় বড় পাথর।" },
+      "title": "Danger at the landing site",
+      "text": "As you come down to land, the camera shows big rocks. The map showed flat ground.",
       "condition": { "legs": ["arrival"], "landing": true },
       "weight": 1.2,
       "check": { "stat": "fuelReservePct", "atLeast": 12 },
-      "checkLabel": { "en": "A fuel reserve of 12% or more", "bn": "জ্বালানির মজুত ১২% বা তার বেশি" },
-      "debriefPrepared": { "en": "Your fuel reserve let you fly past the boulders, much as Apollo 11 did.", "bn": "জ্বালানির মজুত থাকায় পাথরগুলো পেরিয়ে নামা গেছে, অনেকটা অ্যাপোলো ১১-এর মতো।" },
-      "debriefUnprepared": { "en": "A thin fuel reserve left no room to steer around the hazard.", "bn": "জ্বালানির মজুত কম থাকায় বিপদ এড়িয়ে যাওয়ার সুযোগ ছিল না।" },
+      "checkLabel": "Spare fuel: 12% or more",
+      "debriefPrepared": "Your spare fuel let you fly past the big rocks, like Apollo 11 did.",
+      "debriefUnprepared": "You had little spare fuel, so you could not fly around the danger.",
       "choices": [
         {
           "id": "divert",
-          "label": { "en": "Divert to a safer site", "bn": "নিরাপদ জায়গায় সরে যান" },
+          "label": "Fly to a safer place",
           "effect": { "scienceDelta": -1, "safetyDelta": 0, "fuelDeltaPercent": -10, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "Diverting burned precious fuel; with a thin reserve that is a gamble.", "bn": "সরে যেতে মূল্যবান জ্বালানি পুড়েছে; মজুত কম থাকলে এটা জুয়া।" },
+          "outcome": "Flying to a new place used a lot of fuel. With little spare fuel, this was risky.",
           "preparedEffect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": -10, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "Plenty of fuel in reserve: you hovered past the boulders and set down gently.", "bn": "যথেষ্ট জ্বালানি মজুত ছিল: পাথরগুলো পেরিয়ে আলতো করে নেমেছেন।" }
+          "preparedOutcome": "You had plenty of spare fuel. You flew past the rocks and landed gently."
         },
         {
           "id": "land-anyway",
-          "label": { "en": "Land carefully where you are", "bn": "যেখানে আছেন সেখানেই সাবধানে নামুন" },
+          "label": "Land carefully where you are",
           "effect": { "scienceDelta": -2, "safetyDelta": -20, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "One leg came down on a rock; the lander tilted and some equipment was damaged.", "bn": "একটি পা পাথরের ওপর পড়েছে; ল্যান্ডার কাত হয়ে কিছু যন্ত্র ক্ষতিগ্রস্ত হয়েছে।" }
+          "outcome": "One leg landed on a rock. The lander leaned over, and some equipment broke."
         }
       ],
       "source": "Apollo 11's descent: Neil Armstrong flew past a boulder field with little fuel to spare.",
@@ -276,31 +276,31 @@
     },
     {
       "id": "dust-storm",
-      "title": { "en": "Global dust storm", "bn": "গ্রহজোড়া ধুলিঝড়" },
-      "text": { "en": "Dust blots out the Sun across Mars. Solar panels will make only a fraction of their power for weeks.", "bn": "ধুলায় মঙ্গলের আকাশে সূর্য ঢাকা পড়েছে। কয়েক সপ্তাহ সৌর প্যানেল সামান্য বিদ্যুৎ দেবে।" },
+      "title": "Huge dust storm",
+      "text": "Dust covers the sky over all of Mars. For weeks, solar panels will make only a little power.",
       "condition": { "legs": ["surface"], "destinations": ["mars"] },
       "weight": 3,
       "weightBy": "dustStormRisk",
       "check": { "stat": "stormMarginKw", "atLeast": 0 },
-      "checkLabel": { "en": "Enough power during the storm (RTG, batteries and what is left of solar)", "bn": "ঝড়ের সময় যথেষ্ট বিদ্যুৎ (আরটিজি, ব্যাটারি আর সৌরের যতটুকু বাকি থাকে)" },
-      "debriefPrepared": { "en": "Steady power from an RTG or batteries carried you through the dust storm.", "bn": "আরটিজি বা ব্যাটারির স্থির বিদ্যুৎ আপনাকে ধুলিঝড় পার করিয়েছে।" },
-      "debriefUnprepared": { "en": "A thin storm power margin made the dust storm dangerous; the Opportunity rover was lost this way in 2018.", "bn": "ঝড়ের সময় বিদ্যুতের উদ্বৃত্ত কম থাকায় ধুলিঝড় বিপজ্জনক হয়েছে; ২০১৮ সালে অপরচুনিটি রোভার এভাবেই হারিয়ে যায়।" },
+      "checkLabel": "Spare power in a storm: 0 kW or more. A Nuclear Battery and Extra Batteries help.",
+      "debriefPrepared": "Steady power from a Nuclear Battery or batteries kept you going in the dust storm.",
+      "debriefUnprepared": "You had little spare power, so the dust storm was dangerous. NASA lost the Opportunity rover this way in 2018.",
       "choices": [
         {
           "id": "hibernate",
-          "label": { "en": "Hibernate until the sky clears", "bn": "আকাশ পরিষ্কার না হওয়া পর্যন্ত ঘুমিয়ে থাকুন" },
+          "label": "Sleep until the sky is clear",
           "effect": { "scienceDelta": -2, "safetyDelta": -10, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 40 },
-          "outcome": { "en": "With too little power, the heaters struggled and the cold damaged equipment.", "bn": "বিদ্যুৎ কম থাকায় হিটার ঠিকমতো চলেনি, ঠান্ডায় যন্ত্রপাতি ক্ষতিগ্রস্ত হয়েছে।" },
+          "outcome": "There was not enough power for the heaters. The cold damaged some equipment.",
           "preparedEffect": { "scienceDelta": -1, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 10 },
-          "preparedOutcome": { "en": "Your power kept the heaters running; you rested briefly and carried on.", "bn": "বিদ্যুৎ থাকায় হিটার চলেছে; অল্প বিশ্রাম নিয়ে আবার কাজ শুরু।" }
+          "preparedOutcome": "Your power kept the heaters on. You waited a short time, then continued."
         },
         {
           "id": "keep-working",
-          "label": { "en": "Keep working on low power", "bn": "কম বিদ্যুতেই কাজ চালিয়ে যান" },
+          "label": "Keep working with little power",
           "effect": { "scienceDelta": 1, "safetyDelta": -25, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "You squeezed out a little science, but the batteries drained dangerously low.", "bn": "সামান্য বিজ্ঞানের কাজ হয়েছে, কিন্তু ব্যাটারি বিপজ্জনকভাবে ফুরিয়ে এসেছে।" },
+          "outcome": "You got a little science. But the batteries became dangerously low.",
           "preparedEffect": { "scienceDelta": 2, "safetyDelta": -3, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "Steady power let you study the storm itself, a rare chance.", "bn": "স্থির বিদ্যুৎ থাকায় ঝড়টাকেই পর্যবেক্ষণ করা গেছে, বিরল সুযোগ।" }
+          "preparedOutcome": "With steady power, you could study the storm. That is a rare chance."
         }
       ],
       "source": "NASA's Opportunity rover fell silent during the 2018 global dust storm on Mars.",
@@ -308,56 +308,56 @@
     },
     {
       "id": "discovery",
-      "title": { "en": "Discovery opportunity", "bn": "আবিষ্কারের সুযোগ" },
-      "text": { "en": "Your instruments spot something unexpected nearby: a fresh crater with bright exposed material.", "bn": "আপনার যন্ত্রে কাছেই অপ্রত্যাশিত কিছু ধরা পড়েছে: উজ্জ্বল উপাদানসহ একটি নতুন গর্ত।" },
+      "title": "A chance to discover something",
+      "text": "Your instruments see something new nearby: a young crater with bright material inside.",
       "condition": { "legs": ["arrival", "surface"] },
       "weight": 1,
       "check": { "anyModule": ["camera-suite", "spectrometer"] },
-      "checkLabel": { "en": "An HD Camera Suite or a Spectrometer on board", "bn": "এইচডি ক্যামেরা সেট বা স্পেকট্রোমিটার থাকা" },
-      "debriefPrepared": { "en": "Your instruments turned a lucky detour into bonus science.", "bn": "আপনার যন্ত্রপাতি এক ভাগ্যবান ঘুরপথকে বাড়তি বিজ্ঞানে রূপ দিয়েছে।" },
-      "debriefUnprepared": { "en": "You lacked the instruments to make the most of the discovery.", "bn": "আবিষ্কারের পুরো সুবিধা নেওয়ার মতো যন্ত্র আপনার কাছে ছিল না।" },
+      "checkLabel": "HD Cameras or a Rock Scanner on board",
+      "debriefPrepared": "Your instruments turned a lucky find into extra science.",
+      "debriefUnprepared": "You did not have the right instruments for this discovery.",
       "choices": [
         {
           "id": "investigate",
-          "label": { "en": "Investigate (costs fuel and time)", "bn": "তদন্ত করুন (জ্বালানি ও সময় লাগবে)" },
+          "label": "Go and look (uses fuel and time)",
           "effect": { "scienceDelta": 2, "safetyDelta": 0, "fuelDeltaPercent": -6, "budgetDelta": 0, "timeDeltaDays": 7 },
-          "outcome": { "en": "Without the right instruments you collected only basic data.", "bn": "উপযুক্ত যন্ত্র না থাকায় শুধু সাধারণ তথ্য পাওয়া গেছে।" },
+          "outcome": "Without the right instruments, you got only a little data.",
           "preparedEffect": { "scienceDelta": 6, "safetyDelta": 0, "fuelDeltaPercent": -6, "budgetDelta": 0, "timeDeltaDays": 7 },
-          "preparedOutcome": { "en": "Your instruments identified the material: a headline result.", "bn": "আপনার যন্ত্র উপাদানটি শনাক্ত করেছে: শিরোনাম হওয়ার মতো ফল।" }
+          "preparedOutcome": "Your instruments found out what the material is. A big discovery!"
         },
         {
           "id": "stay",
-          "label": { "en": "Stay on plan", "bn": "পরিকল্পনামতো চলুন" },
+          "label": "Keep to the plan",
           "effect": { "scienceDelta": 0, "safetyDelta": 0, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "You kept your margins for the rest of the mission.", "bn": "মিশনের বাকি অংশের জন্য উদ্বৃত্ত বাঁচিয়ে রেখেছেন।" }
+          "outcome": "You saved your fuel and time for the rest of the mission."
         }
       ],
       "source": "Game scenario: unplanned discoveries reward the right instruments and spare fuel."
     },
     {
       "id": "sampler-sink",
-      "title": { "en": "Sampler sinks into Bennu", "bn": "নমুনা-যন্ত্র বেনুতে ডুবে যাচ্ছে" },
-      "text": { "en": "The sampler touches Bennu and keeps sinking: the surface is loose rubble, like a ball pit.", "bn": "নমুনা-যন্ত্র বেনু ছুঁয়েই ডুবে যাচ্ছে: উপরিতল আলগা পাথরের স্তূপ, যেন বলভর্তি খেলার গর্ত।" },
+      "title": "The sampler sinks into Bennu",
+      "text": "The sample arm touches Bennu and keeps going down. The ground is only loose small rocks, like a pool full of balls.",
       "condition": { "legs": ["surface"], "destinations": ["bennu"] },
       "weight": 2,
       "check": { "anyModule": ["sample-return"] },
-      "checkLabel": { "en": "A Sample Return Capsule on board", "bn": "নমুনা ফেরত ক্যাপসুল থাকা" },
-      "debriefPrepared": { "en": "Your sample return capsule made the most of Bennu's surprising surface.", "bn": "নমুনা ফেরত ক্যাপসুল বেনুর অপ্রত্যাশিত উপরিতলের পুরো সুবিধা নিয়েছে।" },
-      "debriefUnprepared": { "en": "Without a sample return capsule, Bennu's surprise yielded little.", "bn": "নমুনা ফেরত ক্যাপসুল না থাকায় বেনুর চমক থেকে সামান্যই পাওয়া গেছে।" },
+      "checkLabel": "A Sample Return Capsule on board",
+      "debriefPrepared": "Your Sample Return Capsule kept a big sample from Bennu's surprising surface.",
+      "debriefUnprepared": "You had no Sample Return Capsule, so you got little from Bennu.",
       "choices": [
         {
           "id": "grab",
-          "label": { "en": "Grab as much as you can", "bn": "যতটা পারেন তুলে নিন" },
+          "label": "Take as much as you can",
           "effect": { "scienceDelta": 1, "safetyDelta": -6, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "With nowhere safe to store it, most of the sample was lost.", "bn": "নিরাপদে রাখার জায়গা না থাকায় নমুনার বেশিরভাগই হারিয়েছে।" },
+          "outcome": "You had no safe place to keep it. You lost most of the sample.",
           "preparedEffect": { "scienceDelta": 4, "safetyDelta": -2, "fuelDeltaPercent": 0, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "preparedOutcome": { "en": "The capsule stowed a big sample, as OSIRIS-REx did in 2020.", "bn": "ক্যাপসুলে বড় একটি নমুনা রাখা গেছে, যেমন ওসাইরিস-রেক্স ২০২০ সালে করেছিল।" }
+          "preparedOutcome": "The capsule kept a big sample, like NASA's OSIRIS-REx did in 2020."
         },
         {
           "id": "back-away",
-          "label": { "en": "Back away immediately", "bn": "সঙ্গে সঙ্গে পিছিয়ে আসুন" },
+          "label": "Move away at once",
           "effect": { "scienceDelta": 1, "safetyDelta": 0, "fuelDeltaPercent": -4, "budgetDelta": 0, "timeDeltaDays": 0 },
-          "outcome": { "en": "A quick back-away burn kept you safe, but the sample was small.", "bn": "দ্রুত পিছু হটায় নিরাপদে ছিলেন, কিন্তু নমুনা অল্প।" }
+          "outcome": "A quick engine burn moved you away safely. But the sample was small."
         }
       ],
       "source": "NASA OSIRIS-REx touch-and-go sample collection at Bennu, October 2020.",

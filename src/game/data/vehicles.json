@@ -26,10 +26,7 @@
       "costUSDm": 67,
       "reliability": 0.99,
       "inDevelopment": false,
-      "description": {
-        "en": "The reusable workhorse. Cheapest ride, but only small robotic missions fit.",
-        "bn": "পুনঃব্যবহারযোগ্য নির্ভরযোগ্য রকেট। সবচেয়ে সস্তা, তবে শুধু ছোট রোবোটিক মিশন আঁটে।"
-      }
+      "description": "This rocket can fly again and again. It is the cheapest, but it can lift only small robot missions."
     },
     {
       "id": "falcon-heavy",
@@ -38,10 +35,7 @@
       "costUSDm": 97,
       "reliability": 0.97,
       "inDevelopment": false,
-      "description": {
-        "en": "Three Falcon 9 cores strapped together: big capacity for the price.",
-        "bn": "তিনটি ফ্যালকন ৯ কোর একসাথে জোড়া: দামের তুলনায় অনেক বেশি বহন ক্ষমতা।"
-      }
+      "description": "Like 3 Falcon 9 rockets joined together. It lifts a lot for its price."
     },
     {
       "id": "sls-block-1",
@@ -50,10 +44,7 @@
       "costUSDm": 2200,
       "reliability": 0.95,
       "inDevelopment": false,
-      "description": {
-        "en": "A super-heavy Moon rocket, flown on Artemis I. Enormous, and enormously expensive.",
-        "bn": "চাঁদে যাওয়ার অতিভারী রকেট, আর্টেমিস ১-এ উড়েছে। বিশাল, আর খরচও বিশাল।"
-      }
+      "description": "A very big Moon rocket. It flew NASA's Artemis I mission. It is huge and very expensive."
     },
     {
       "id": "starship",
@@ -62,10 +53,7 @@
       "costUSDm": 250,
       "reliability": 0.8,
       "inDevelopment": true,
-      "description": {
-        "en": "A fully reusable giant, still in development: cheap per tonne, but riskier.",
-        "bn": "সম্পূর্ণ পুনঃব্যবহারযোগ্য বিশাল রকেট, এখনো উন্নয়নাধীন: প্রতি টনে সস্তা, কিন্তু ঝুঁকি বেশি।"
-      }
+      "description": "A giant rocket that can fly again and again. It is still being tested. Cheap for its size, but more risky."
     }
   ]
 }

@@ -1,7 +1,5 @@
 // Shared types for the game data (src/game/data/*.json) and the engine.
 
-export type Locale = 'en' | 'bn'
-export type Text = { en: string; bn: string }
 export type Source = { name: string; url?: string; note?: string }
 
 export type LegId = 'launch' | 'transit' | 'arrival' | 'surface' | 'return'
@@ -12,9 +10,9 @@ export type BarStatus = 'ok' | 'warn' | 'bad'
 
 export type Destination = {
   id: string
-  name: Text
+  name: string
   distanceKm: number
-  distanceNote: Text
+  distanceNote: string
   travelDays: number
   surfaceDays: number
   gravityMS2: number
@@ -32,8 +30,8 @@ export type Destination = {
   crewRequires: string[]
   /** science points for full marks */
   scienceTarget: number
-  description: Text
-  funFact: Text
+  description: string
+  funFact: string
 }
 
 export type Vehicle = {
@@ -44,12 +42,12 @@ export type Vehicle = {
   /** 0–1 */
   reliability: number
   inDevelopment: boolean
-  description: Text
+  description: string
 }
 
 export type Engine = {
   id: string
-  name: Text
+  name: string
   ispSeconds: number
   massTonnes: number
   costUSDm: number
@@ -58,13 +56,13 @@ export type Engine = {
   /** false = thrust too low for landing burns */
   landingCapable: boolean
   travelTimeMultiplier: number
-  description: Text
-  restriction: Text | null
+  description: string
+  restriction: string | null
 }
 
 export type Module = {
   id: string
-  name: Text
+  name: string
   category: ModuleCategory
   massTonnes: number
   costUSDm: number
@@ -84,8 +82,8 @@ export type Module = {
   /** science only counts once the capsule is home */
   returnsSamples: boolean
   maxCount: number
-  requiresPowerNote: Text
-  blurb: Text
+  requiresPowerNote: string
+  blurb: string
 }
 
 export type Effect = {
@@ -101,12 +99,12 @@ export type EventCheck = { stat: CheckStat; atLeast: number } | { anyModule: str
 
 export type Choice = {
   id: string
-  label: Text
+  label: string
   effect: Effect
-  outcome: Text
+  outcome: string
   /** used instead when the build passes the event's check */
   preparedEffect?: Effect
-  preparedOutcome?: Text
+  preparedOutcome?: string
 }
 
 export type EventCondition = {
@@ -120,15 +118,15 @@ export type EventCondition = {
 
 export type GameEvent = {
   id: string
-  title: Text
-  text: Text
+  title: string
+  text: string
   condition: EventCondition
   weight: number
   weightBy?: 'radiationLevel' | 'dustStormRisk' | 'launchRisk'
   check: EventCheck | null
-  checkLabel: Text | null
-  debriefPrepared: Text | null
-  debriefUnprepared: Text
+  checkLabel: string | null
+  debriefPrepared: string | null
+  debriefUnprepared: string
   choices: Choice[]
   source: string
   sourceUrl?: string
@@ -136,8 +134,8 @@ export type GameEvent = {
 
 export type Difficulty = {
   id: string
-  name: Text
-  description: Text
+  name: string
+  description: string
   budgetMultiplier: number
   deltaVMultiplier: number
   /** [min, max] events per mission */
@@ -148,8 +146,8 @@ export type Difficulty = {
 
 export type LaunchWindow = {
   id: string
-  name: Text
-  description: Text
+  name: string
+  description: string
   travelTimeMultiplier: number
   deltaVMultiplier: number
 }

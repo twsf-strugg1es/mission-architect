@@ -1,4 +1,4 @@
-// Engine log entries, effects and debrief items -> plain language in the current locale.
+// Engine log entries, effects and debrief items -> plain-English sentences.
 import { byId, ENGINES, EVENTS, RULES } from '@/game/data'
 import type { LogEntry, MissionContext } from '@/game/engine/mission'
 import type { DebriefItem } from '@/game/engine/score'
@@ -39,7 +39,7 @@ export function logText(e: LogEntry, ctx: MissionContext, i: I18n): string {
       return i.t('log.samples', { x: i.n(e.x, 1) })
     case 'event': {
       const { event, choice } = eventChoice(e.eventId, e.choiceId)
-      return `${i.t('log.event', { title: i.tx(event.title), choice: i.tx(choice.label) })} ${effectParts(e.effect, i).join(', ')}`
+      return `${i.t('log.event', { title: event.title, choice: choice.label })} ${effectParts(e.effect, i).join(', ')}`
     }
     case 'fail':
       return i.t(e.reason === 'fuel' ? 'log.failFuel' : 'log.failSafety', { leg: leg(e.legIndex) })
@@ -55,7 +55,7 @@ export function debriefText(d: DebriefItem, ctx: MissionContext, i: I18n): strin
     case 'event': {
       const { event, choice } = eventChoice(d.eventId, d.choiceId)
       const lesson = d.prepared && event.debriefPrepared ? event.debriefPrepared : event.debriefUnprepared
-      return `${i.tx(event.title)} (${i.tx(choice.label)}): ${i.tx(lesson)} ${effectParts(d.effect, i).join(', ')}.`
+      return `${event.title} (${choice.label}): ${lesson} ${effectParts(d.effect, i).join(', ')}.`
     }
     case 'margin':
       return i.t(d.level === 'thin' ? 'deb.marginThin' : d.level === 'excess' ? 'deb.marginExcess' : 'deb.marginGood', { pct: i.n(d.pct, 1) })
@@ -63,16 +63,16 @@ export function debriefText(d: DebriefItem, ctx: MissionContext, i: I18n): strin
       const engine = byId(ENGINES, d.engineId)
       const alt = byId(ENGINES, d.altEngineId)
       return i.t('deb.engine', {
-        engine: i.tx(engine.name),
+        engine: engine.name,
         isp: i.n(engine.ispSeconds),
         prop: i.n(d.prop, 1),
-        alt: i.tx(alt.name),
+        alt: alt.name,
         altIsp: i.n(alt.ispSeconds),
         altProp: i.n(d.altProp, 1),
       })
     }
     case 'window':
-      return i.t('deb.window', { window: i.tx(byId(RULES.launchWindows, d.windowId).name), days: i.n(d.days), need: i.n(d.need, 2) })
+      return i.t('deb.window', { window: byId(RULES.launchWindows, d.windowId).name, days: i.n(d.days), need: i.n(d.need, 2) })
     case 'science':
       return i.t(d.tone === 'good' ? 'deb.scienceHigh' : 'deb.scienceLow', { earned: i.n(d.earned, 1), target: i.n(d.target) })
     case 'comms':

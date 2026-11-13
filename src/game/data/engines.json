@@ -28,69 +28,51 @@
   "engines": [
     {
       "id": "chemical",
-      "name": { "en": "Chemical (storable)", "bn": "রাসায়নিক (সংরক্ষণযোগ্য)" },
+      "name": "Basic chemical",
       "ispSeconds": 330,
       "massTonnes": 1.2,
       "costUSDm": 40,
       "powerKw": 0,
       "landingCapable": true,
       "travelTimeMultiplier": 1,
-      "description": {
-        "en": "Simple and reliable. Each kilogram of propellant gives a modest push.",
-        "bn": "সহজ ও নির্ভরযোগ্য। প্রতি কেজি জ্বালানি থেকে মাঝারি ধাক্কা।"
-      },
+      "description": "Simple, and it rarely fails. Each kilogram of fuel gives a small push.",
       "restriction": null
     },
     {
       "id": "cryogenic",
-      "name": { "en": "Advanced chemical (cryogenic)", "bn": "উন্নত রাসায়নিক (ক্রায়োজেনিক)" },
+      "name": "Advanced chemical",
       "ispSeconds": 450,
       "massTonnes": 1.6,
       "costUSDm": 90,
       "powerKw": 0,
       "landingCapable": true,
       "travelTimeMultiplier": 1,
-      "description": {
-        "en": "Liquid hydrogen and oxygen: a faster exhaust, so more push from every kilogram.",
-        "bn": "তরল হাইড্রোজেন ও অক্সিজেন: নিঃসরণ দ্রুততর, তাই প্রতি কেজি জ্বালানিতে বেশি ধাক্কা।"
-      },
+      "description": "Burns super-cold (cryogenic) liquid hydrogen and oxygen. Each kilogram of fuel gives more push.",
       "restriction": null
     },
     {
       "id": "nuclear-thermal",
-      "name": { "en": "Nuclear thermal", "bn": "নিউক্লিয়ার থার্মাল" },
+      "name": "Nuclear",
       "ispSeconds": 900,
       "massTonnes": 6,
       "costUSDm": 600,
       "powerKw": 0,
       "landingCapable": true,
       "travelTimeMultiplier": 1,
-      "description": {
-        "en": "A reactor heats hydrogen to extreme temperatures: very efficient, but heavy and costly.",
-        "bn": "একটি চুল্লি হাইড্রোজেনকে প্রচণ্ড গরম করে: খুবই দক্ষ, কিন্তু ভারী ও ব্যয়বহুল।"
-      },
-      "restriction": {
-        "en": "Launching a reactor brings extra public and political review: expect a review event at launch.",
-        "bn": "চুল্লি উৎক্ষেপণে বাড়তি জনমত ও রাজনৈতিক পর্যালোচনা আসে: উৎক্ষেপণে একটি পর্যালোচনার ঘটনা ঘটতে পারে।"
-      }
+      "description": "A nuclear reactor makes hydrogen very hot. It uses fuel very well, but it is heavy and expensive.",
+      "restriction": "Launching a nuclear reactor needs an extra safety review. Expect a review event at launch."
     },
     {
       "id": "ion",
-      "name": { "en": "Ion (electric)", "bn": "আয়ন (বৈদ্যুতিক)" },
+      "name": "Electric (ion)",
       "ispSeconds": 3000,
       "massTonnes": 0.8,
       "costUSDm": 150,
       "powerKw": -2.5,
       "landingCapable": false,
       "travelTimeMultiplier": 3,
-      "description": {
-        "en": "Electric fields fling xenon ions out at huge speed: incredibly efficient, but the push is gentle and needs 2.5 kW of power.",
-        "bn": "বৈদ্যুতিক ক্ষেত্র জেনন আয়নকে প্রচণ্ড বেগে ছুড়ে দেয়: অবিশ্বাস্য দক্ষ, কিন্তু ধাক্কা মৃদু আর ২.৫ কিলোওয়াট বিদ্যুৎ লাগে।"
-      },
-      "restriction": {
-        "en": "Thrust too low for landing burns: it only works for the asteroid rendezvous, and travel takes three times as long.",
-        "bn": "অবতরণের জন্য ধাক্কা খুবই কম: শুধু গ্রহাণু মিলন অভিযানে চলে, আর যাত্রায় তিন গুণ সময় লাগে।"
-      }
+      "description": "Electricity pushes out tiny xenon particles very fast. It uses fuel extremely well. But the push is very gentle, and it needs 2.5 kW of power.",
+      "restriction": "Too weak to land. Use it only for the asteroid. The trip takes 3 times longer."
     }
   ]
 }

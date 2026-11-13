@@ -7,7 +7,7 @@ import { useI18n } from '@/game/useI18n'
 
 /** Propellant slider with the live rocket-equation readout. Max = the rocket's capacity. */
 export function FuelControl({ report }: { report: BuildReport }) {
-  const { t, tx, n } = useI18n()
+  const { t, n } = useI18n()
   const propellant = useGame((s) => s.build.propellantTonnes)
   const updateBuild = useGame((s) => s.updateBuild)
   const id = useId()
@@ -33,7 +33,7 @@ export function FuelControl({ report }: { report: BuildReport }) {
         onValueChange={([v]) => updateBuild({ propellantTonnes: v })}
       />
       <p className="text-sm font-medium tabular-nums" aria-live="polite">
-        {t('eq.yours', { dv: n(report.deltaV, 2), dest: tx(report.destination.name), need: n(report.requiredDeltaV, 2) })}
+        {t('eq.yours', { dv: n(report.deltaV, 2), need: n(report.requiredDeltaV, 2) })}
       </p>
       <p className="text-xs text-muted-foreground">{t('fuel.note')}</p>
     </div>

@@ -25,7 +25,7 @@ function Stats({ items }: { items: [DictKey, string][] }) {
 }
 
 export function VehicleScreen() {
-  const { t, tx, n, money } = useI18n()
+  const { t, n, money } = useI18n()
   const { build, updateBuild, go, difficultyId } = useGame()
   const report = analyzeBuild(build, difficultyId)
 
@@ -49,7 +49,7 @@ export function VehicleScreen() {
             <ChoiceCard key={v.id} selected={build.vehicleId === v.id} onSelect={() => updateBuild({ vehicleId: v.id })} selectedLabel={t('common.selected')}>
               <span className="pr-20 text-lg font-medium">{v.name}</span>
               {v.inDevelopment && <Badge variant="outline">{t('veh.inDev')}</Badge>}
-              <span className="text-sm text-ink-3">{tx(v.description)}</span>
+              <span className="text-sm text-ink-3">{v.description}</span>
               <Stats
                 items={[
                   ['veh.payload', t('unit.t', { n: n(v.payloadToLEOTonnes, 1) })],
@@ -72,12 +72,12 @@ export function VehicleScreen() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {ENGINES.map((e) => (
             <ChoiceCard key={e.id} selected={build.engineId === e.id} onSelect={() => updateBuild({ engineId: e.id })} selectedLabel={t('common.selected')}>
-              <span className="pr-20 text-lg font-medium">{tx(e.name)}</span>
-              <span className="text-sm text-ink-3">{tx(e.description)}</span>
+              <span className="pr-20 text-lg font-medium">{e.name}</span>
+              <span className="text-sm text-ink-3">{e.description}</span>
               {e.restriction && (
                 <span className="flex gap-1.5 text-xs text-warn">
                   <TriangleAlert className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-                  {tx(e.restriction)}
+                  {e.restriction}
                 </span>
               )}
               <Stats

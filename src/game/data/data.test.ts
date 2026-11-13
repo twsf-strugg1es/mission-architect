@@ -1,12 +1,12 @@
 // The JSON is asserted to its types in index.ts; these tests prove the data really matches.
 import { describe, expect, it } from 'vitest'
 import { DICT } from '../i18n'
-import type { Effect, Text } from '../types'
+import type { Effect } from '../types'
 import { DESTINATIONS, DIFFICULTIES, ENGINES, EVENTS, MODULES, RULES, SOURCES, VEHICLES, byId } from './index'
 
 const LEGS = ['launch', 'transit', 'arrival', 'surface', 'return']
 const CATEGORIES = ['command', 'landing', 'power', 'science', 'comms', 'protection', 'surface']
-const filled = (t: Text) => t.en.trim().length > 0 && t.bn.trim().length > 0
+const filled = (t: string) => t.trim().length > 0
 const isEffect = (e: Effect) =>
   ['scienceDelta', 'safetyDelta', 'fuelDeltaPercent', 'budgetDelta', 'timeDeltaDays'].every((k) => Number.isFinite(e[k as keyof Effect]))
 
@@ -84,8 +84,7 @@ describe('game data', () => {
     expect(w.science + w.safety + w.budget + w.deltaVMargin + w.events).toBe(100)
   })
 
-  it('every UI string exists in both languages', () => {
-    for (const [key, value] of Object.entries(DICT.bn)) expect(value.trim().length, key).toBeGreaterThan(0)
-    expect(Object.keys(DICT.bn).sort()).toEqual(Object.keys(DICT.en).sort())
+  it('every UI string is filled in', () => {
+    for (const [key, value] of Object.entries(DICT)) expect(filled(value), key).toBe(true)
   })
 })

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { LanguageToggle } from '@/components/LanguageToggle'
 import { StepIndicator } from '@/components/StepIndicator'
 import { screenFromHash, useGame } from '@/game/store/useGame'
 import { useI18n } from '@/game/useI18n'
@@ -23,15 +22,10 @@ const SCREENS = {
 }
 
 function App() {
-  const { locale, t } = useI18n()
+  const { t } = useI18n()
   const screen = useGame((s) => s.screen)
   const seed = useGame((s) => s.seed)
   const Screen = SCREENS[screen]
-
-  useEffect(() => {
-    document.documentElement.lang = locale
-    document.title = t('app.title')
-  }, [locale, t])
 
   // A hash typed or navigated to in an open tab (or back/forward) opens that screen.
   useEffect(() => {
@@ -55,9 +49,8 @@ function App() {
   return (
     <div className="flex min-h-svh flex-col">
       <header className="border-b border-rule bg-paper-3">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+        <div className="mx-auto max-w-6xl px-4 py-3">
           <p className="font-medium">{t('app.title')}</p>
-          <LanguageToggle />
         </div>
         {screen !== 'home' && <StepIndicator current={screen} />}
       </header>

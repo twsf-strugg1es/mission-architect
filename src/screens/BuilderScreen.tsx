@@ -17,12 +17,12 @@ import { cn } from '@/lib/utils'
 const CATEGORIES: ModuleCategory[] = ['command', 'landing', 'power', 'science', 'comms', 'protection', 'surface']
 
 function ModuleRow({ m }: { m: Module }) {
-  const { t, tx, n, money } = useI18n()
+  const { t, n, money } = useI18n()
   const build = useGame((s) => s.build)
   const addModule = useGame((s) => s.addModule)
   const removeModule = useGame((s) => s.removeModule)
   const c = count(build, m.id)
-  const name = tx(m.name)
+  const name = m.name
   const stats: [DictKey, string][] = [
     ['mod.mass', t('unit.t', { n: n(m.massTonnes, 2) })],
     ['mod.cost', money(m.costUSDm)],
@@ -57,7 +57,7 @@ function ModuleRow({ m }: { m: Module }) {
           </Button>
         </div>
       </div>
-      <p className="text-sm text-ink-2">{tx(m.blurb)}</p>
+      <p className="text-sm text-ink-2">{m.blurb}</p>
       <dl className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
         {stats.map(([label, value]) => (
           <div key={label} className="flex items-baseline gap-1.5">
@@ -66,7 +66,7 @@ function ModuleRow({ m }: { m: Module }) {
           </div>
         ))}
       </dl>
-      <p className="text-xs text-ink-3">{tx(m.requiresPowerNote)}</p>
+      <p className="text-xs text-ink-3">{m.requiresPowerNote}</p>
     </li>
   )
 }

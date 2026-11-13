@@ -1,5 +1,5 @@
 /* Hallmark · shape: app screen · genre: modern-minimal · theme: Rim (deal 1/3, seed space-mission-game-spacecraft-f6f8·b5f55acb·2026-11-12·r0) · rim: station · redesign: restyle
- * nav: kept, a top bar with the step strip and the language switch · signature: the spacecraft budget sheet, four live budget bars over the rocket equation in the player's own numbers · states: empty build, blocked with reasons, ready, flight paused on an event, mission complete or lost
+ * nav: kept, a top bar with the step strip · signature: the spacecraft budget sheet, four live budget bars over the rocket equation in the player's own numbers · states: empty build, blocked with reasons, ready, flight paused on an event, mission complete or lost
  * axes: dark/grotesk-sans/cool · posture: committed · contrast: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, the catalogue stays a two-column grid because the layout is kept; Geist Mono figures, hairlines and square edges carry the change */
 /* Hallmark · answered F18 · the "slider" slot is the propellant slider, a range control shadcn tags with data-slot, not an image */
@@ -14,11 +14,6 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
-/* Geist has no Bengali glyphs: Hind Siliguri (Google Fonts, self-hosted) renders them. */
-@import "@fontsource/hind-siliguri/bengali-400.css";
-@import "@fontsource/hind-siliguri/bengali-500.css";
-@import "@fontsource/hind-siliguri/bengali-600.css";
-@import "@fontsource/hind-siliguri/bengali-700.css";
 
 @custom-variant dark (&:is(.dark *));
 

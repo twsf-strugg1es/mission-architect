@@ -38,9 +38,9 @@
   --color-moon: oklch(80% 0.012 250);
   --color-mars: oklch(64% 0.16 40);
   --color-bennu: oklch(54% 0.02 60);
-  --font-display: "Geist Variable", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-display);
-  --font-outlier: "Geist Mono Variable", "Hind Siliguri", ui-monospace, monospace;
+  --font-outlier: "Geist Mono Variable", ui-monospace, monospace;
   --radius-card: 0;
   --radius-pill: 0;
   --shadow-card: none;

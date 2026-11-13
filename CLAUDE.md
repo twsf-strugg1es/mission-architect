@@ -15,7 +15,7 @@
 | UI | React 19 + TypeScript 7 |
 | Styling | Tailwind CSS 4 via `@tailwindcss/vite`; no tailwind config file. Design tokens (hallmark Rim, station colourway) in `src/tokens.css`, base rules in `src/base.css`, shadcn variables mapped to them in `src/index.css` |
 | Components | shadcn/ui, style `radix-nova` (Radix primitives, Lucide icons). Installed: button, card, slider, progress, badge, dialog, tabs, tooltip. Add more with `npx shadcn@latest add <name>` |
-| Fonts | Geist (UI), Geist Mono (every measured number), Hind Siliguri (Bengali glyphs), all self-hosted via @fontsource |
+| Fonts | Geist (UI) and Geist Mono (every measured number), self-hosted via @fontsource |
 | State | zustand 5 |
 | Animation | motion (`import { motion } from "motion/react"`) |
 | Icons | lucide-react |
@@ -29,8 +29,8 @@ src/
   game/
     data/      JSON data (destinations, vehicles, engines, modules, events, difficulties, rules) + typed index.ts + data.test.ts
     engine/    pure functions: physics (rocket equation), build (totals, checks), mission (seeded sim), score (+ tests)
-    store/     zustand store (screen state machine, persisted language/difficulty/best score)
-    i18n.ts    en + bn UI dictionary; useI18n.ts binds it to the store
+    store/     zustand store (screen state machine, persisted difficulty/best score)
+    i18n.ts    the plain-English UI dictionary and number formatting; useI18n.ts hands them to components
   components/  UI components (shadcn primitives in components/ui/)
   screens/     game screens
   lib/         shadcn cn helper
@@ -54,7 +54,7 @@ scrollcraft/   scroll-craft workspace (landing/story builds, fingerprint registr
 - **Data-first.** Every game balance number (masses, costs, power, Isp, capacities, event odds, scoring) lives in JSON under `src/game/data/`. Never hard-code them in components.
 - **Pure engine.** Simulation logic is pure functions in `src/game/engine/`. The rocket equation is implemented once and reused everywhere. Random event cards take their random source as an argument so the engine stays testable.
 - **No backend.** Static site only: bake fetched data into JSON, or call public APIs from the browser. Vite only exposes `VITE_`-prefixed env vars to the browser, and anything shipped to the browser is public.
-- **Bangla + English everywhere.** Every UI string goes through `src/game/i18n.ts` (both locales, same keys; a test enforces it); game content comes from the JSON `{ en, bn }` fields. Numbers go through `fmt` so Bangla gets Bengali digits.
+- **English only, in plain language.** The game is English only (Bangla was removed on 2026-11-13; the last bilingual version is commit `9eb7d9b`). Write for players with limited English: short sentences (about 15 words at most), common words, no idioms, and space words explained the first time they appear (delta-v means change in speed). Use one name for each idea everywhere: fuel (not propellant), parts (not modules), rocket (not launch vehicle), and the part names as the builder shows them (Backup Computer, Big Antenna, Nuclear Battery). Every UI string lives in `src/game/i18n.ts`; game content is the plain strings in the JSON. Numbers go through `fmt`.
 - **Accessibility matters.** Pair numbers and icons, never colour alone (`BudgetBar` shows value text, a status icon and words). Keyboard reachable, visible focus, respect reduced motion. Do not use the shadcn `Progress` for budgets: it exposes no `aria-valuenow`; use `src/components/BudgetBar.tsx`.
 - **Design system (hallmark Rim, station).** Navy paper, one accent (`signal`) for the primary action, the current selection and state only; green/amber/red only as status beside an icon and words. Square hairline surfaces, nothing round, no glass, glow or starfield. Geist Mono for every measured number, never for labels or sentences. Headings at weight 500. Colours only through tokens; animate `transform`/`opacity` only.
 - **Secrets.** Real keys only in the local `.env` (git-ignored). `.env.example` lists the keys.

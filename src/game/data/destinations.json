@@ -43,9 +43,9 @@
   "destinations": [
     {
       "id": "moon",
-      "name": { "en": "Moon", "bn": "চাঁদ" },
+      "name": "Moon",
       "distanceKm": 384400,
-      "distanceNote": { "en": "average distance from Earth", "bn": "পৃথিবী থেকে গড় দূরত্ব" },
+      "distanceNote": "average distance from Earth",
       "travelDays": 3,
       "surfaceDays": 14,
       "gravityMS2": 1.62,
@@ -56,23 +56,14 @@
       "landing": true,
       "crewRequires": ["crew-capsule"],
       "scienceTarget": 16,
-      "description": {
-        "en": "Our nearest neighbour: three days away, with no air and long, freezing nights.",
-        "bn": "আমাদের সবচেয়ে কাছের প্রতিবেশী: মাত্র তিন দিনের পথ, বাতাস নেই, রাত দীর্ঘ আর হিমশীতল।"
-      },
-      "funFact": {
-        "en": "The Moon drifts about 3.8 cm farther from Earth every year, measured with mirrors left by Apollo astronauts.",
-        "bn": "অ্যাপোলো নভোচারীদের রেখে আসা আয়না দিয়ে মাপা গেছে, চাঁদ প্রতি বছর পৃথিবী থেকে প্রায় ৩.৮ সেমি দূরে সরে যাচ্ছে।"
-      }
+      "description": "Our closest neighbour in space. It is 3 days away. There is no air, and the nights are long and very cold.",
+      "funFact": "The Moon moves about 3.8 cm farther from Earth every year. Scientists measure this with mirrors that Apollo astronauts left there."
     },
     {
       "id": "mars",
-      "name": { "en": "Mars", "bn": "মঙ্গল" },
+      "name": "Mars",
       "distanceKm": 228000000,
-      "distanceNote": {
-        "en": "midpoint of its closest and farthest distance from Earth",
-        "bn": "পৃথিবী থেকে সবচেয়ে কাছের ও সবচেয়ে দূরের দূরত্বের মাঝামাঝি"
-      },
+      "distanceNote": "halfway between its closest and farthest distance from Earth",
       "travelDays": 210,
       "surfaceDays": 60,
       "gravityMS2": 3.73,
@@ -83,23 +74,14 @@
       "landing": true,
       "crewRequires": ["crew-capsule", "habitat"],
       "scienceTarget": 20,
-      "description": {
-        "en": "A cold desert world with a thin carbon-dioxide atmosphere, planet-wide dust storms and ancient riverbeds.",
-        "bn": "পাতলা কার্বন ডাই-অক্সাইড বায়ুমণ্ডল, গ্রহজোড়া ধুলিঝড় আর প্রাচীন নদীখাতের এক শীতল মরুভূমি-গ্রহ।"
-      },
-      "funFact": {
-        "en": "Mars gets only 43% of the sunlight Earth gets (586 vs 1361 W/m²), so solar panels make less than half the power there.",
-        "bn": "মঙ্গল পৃথিবীর মাত্র ৪৩% সূর্যালোক পায় (৫৮৬ বনাম ১৩৬১ ওয়াট/মি²), তাই সেখানে সৌর প্যানেল অর্ধেকেরও কম বিদ্যুৎ দেয়।"
-      }
+      "description": "A cold desert planet. Its air is thin and mostly carbon dioxide. It has huge dust storms and very old, dry river beds.",
+      "funFact": "Mars gets only 43% of the sunlight that Earth gets. So solar panels make less than half as much power there."
     },
     {
       "id": "bennu",
-      "name": { "en": "Bennu (asteroid)", "bn": "বেনু (গ্রহাণু)" },
+      "name": "Asteroid Bennu",
       "distanceKm": 177000000,
-      "distanceNote": {
-        "en": "midpoint of its closest and farthest distance from Earth, from its JPL orbit",
-        "bn": "JPL কক্ষপথের হিসাবে, পৃথিবী থেকে সবচেয়ে কাছের ও সবচেয়ে দূরের দূরত্বের মাঝামাঝি"
-      },
+      "distanceNote": "halfway between its closest and farthest distance from Earth",
       "travelDays": 816,
       "surfaceDays": 500,
       "gravityMS2": 0.000083,
@@ -110,14 +92,8 @@
       "landing": false,
       "crewRequires": ["crew-capsule", "habitat"],
       "scienceTarget": 12,
-      "description": {
-        "en": "A 484 m rubble-pile asteroid that circles the Sun every 437 days and crosses close to Earth's orbit. Missions rendezvous instead of landing.",
-        "bn": "৪৮৪ মিটার চওড়া, পাথরের স্তূপের মতো এক গ্রহাণু; ৪৩৭ দিনে সূর্যকে একবার ঘোরে আর পৃথিবীর কক্ষপথের খুব কাছ দিয়ে যায়। এখানে অবতরণ নয়, মিলন অভিযান হয়।"
-      },
-      "funFact": {
-        "en": "Bennu's gravity is so weak (about 0.00008 m/s²) that a pebble dropped from 3 m would take about 4 minutes to land.",
-        "bn": "বেনুর মাধ্যাকর্ষণ এত দুর্বল (প্রায় ০.০০০০৮ মি/সে²) যে ৩ মিটার উঁচু থেকে ফেলা নুড়ি মাটিতে পড়তে প্রায় ৪ মিনিট লাগে।"
-      }
+      "description": "A small asteroid, 484 m wide, made of loose rocks. It goes around the Sun every 437 days and comes close to Earth. Spacecraft fly next to it but do not land.",
+      "funFact": "Bennu's gravity is very weak. A small stone dropped from 3 m takes about 4 minutes to reach the ground."
     }
   ]
 }

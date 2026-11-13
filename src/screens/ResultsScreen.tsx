@@ -19,7 +19,7 @@ const TONE = {
 
 export function ResultsScreen() {
   const i18n = useI18n()
-  const { t, tx, n, money } = i18n
+  const { t, n, money } = i18n
   const { build, difficultyId, windowId, mission, newBest, flyAgain, go } = useGame()
   const ctx = useMemo(() => createContext(build, difficultyId, windowId), [build, difficultyId, windowId])
   const [copy, setCopy] = useState<'idle' | 'done' | 'failed'>('idle')
@@ -31,13 +31,13 @@ export function ResultsScreen() {
   const failure = mission.failure ? t(mission.failure.reason === 'fuel' ? 'log.failFuel' : 'log.failSafety', { leg: t(ctx.legs[mission.failure.legIndex].label) }) : null
 
   const summary = [
-    t('sum.header', { dest: tx(ctx.destination.name), difficulty: tx(byId(DIFFICULTIES, difficultyId).name) }),
+    t('sum.header', { dest: ctx.destination.name, difficulty: byId(DIFFICULTIES, difficultyId).name }),
     t('sum.build', {
       vehicle: ctx.vehicle.name,
-      engine: tx(ctx.engine.name),
+      engine: ctx.engine.name,
       mass: n(ctx.totals.totalMass, 1),
       cost: money(ctx.missionCost),
-      window: tx(ctx.window.name),
+      window: ctx.window.name,
     }),
     t('sum.result', {
       grade: result.grade,
@@ -49,7 +49,7 @@ export function ResultsScreen() {
     t('sum.events', {
       list: mission.resolved.map((r) => {
         const { event, choice } = eventChoice(r.eventId, r.choiceId)
-        return `${tx(event.title)} (${tx(choice.label)})`
+        return `${event.title} (${choice.label})`
       }).join('; ') || '—',
     }),
     failure ?? '',
@@ -69,7 +69,7 @@ export function ResultsScreen() {
   return (
     <section aria-labelledby="screen-title" className="mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:py-8">
       <h1 id="screen-title" tabIndex={-1} className="max-w-none text-2xl font-medium outline-none sm:text-3xl">
-        {t('res.title')}: {tx(ctx.destination.name)}
+        {t('res.title')}: {ctx.destination.name}
       </h1>
 
       <div className="grid gap-6 lg:grid-cols-[300px_1fr]">

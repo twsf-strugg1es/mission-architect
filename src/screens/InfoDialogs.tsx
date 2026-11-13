@@ -39,16 +39,16 @@ export function HowToPlayDialog() {
 }
 
 export function DataDialog() {
-  const { t, tx, n } = useI18n()
+  const { t, n } = useI18n()
   const { overlay, setOverlay } = useGame()
   const list = (items: string[]) => items.join(', ')
   const ion = byId(ENGINES, 'ion')
   const simplifications = [
     t('simp.leo'),
-    t('simp.deltaV', { list: list(DESTINATIONS.map((d) => t('simp.item', { name: tx(d.name), value: t('unit.kms', { n: n(d.deltaVRequired, 1) }) }))) }),
-    t('simp.solar', { list: list(DESTINATIONS.map((d) => t('simp.item', { name: tx(d.name), value: t('unit.times', { n: n(d.sunlightFactor, 2) }) }))) }),
+    t('simp.deltaV', { list: list(DESTINATIONS.map((d) => t('simp.item', { name: d.name, value: t('unit.kms', { n: n(d.deltaVRequired, 1) }) }))) }),
+    t('simp.solar', { list: list(DESTINATIONS.map((d) => t('simp.item', { name: d.name, value: t('unit.times', { n: n(d.sunlightFactor, 2) }) }))) }),
     t('simp.windows', {
-      list: list(RULES.launchWindows.map((w) => t('simp.windowItem', { name: tx(w.name), travel: n(w.travelTimeMultiplier, 2), dv: n(w.deltaVMultiplier, 2) }))),
+      list: list(RULES.launchWindows.map((w) => t('simp.windowItem', { name: w.name, travel: n(w.travelTimeMultiplier, 2), dv: n(w.deltaVMultiplier, 2) }))),
     }),
     t('simp.ion', { x: n(ion.travelTimeMultiplier) }),
     t('simp.fuel'),
