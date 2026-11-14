@@ -267,7 +267,7 @@ const en = {
   'data.sources': 'Sources',
   'data.simplifications': 'What we made simpler',
   'data.credits': 'Credits',
-  'data.creditsText': 'The real numbers come from NASA. We used the Open Science Data Repository (OSDR and RadLab), the NSSDC Planetary Fact Sheets, the JPL Small-Body Database and the DONKI space weather database. This game is not made by NASA, and NASA has not approved it.',
+  'data.creditsText': 'The real numbers come from NASA. We used the Open Science Data Repository (OSDR and RadLab), the NSSDC Planetary Fact Sheets, the JPL Small-Body Database and the DONKI space weather database.',
   'simp.leo': 'The rocket only lifts you into orbit around Earth. After that, your spacecraft uses its own engine.',
   'simp.deltaV': 'Each place has one delta-v number for the whole trip: {list}. It counts from Earth orbit and includes landing and return.',
   'simp.solar': 'Solar panels make less power far from the Sun: {list}. A Nuclear Battery (RTG) gives the same power everywhere.',
