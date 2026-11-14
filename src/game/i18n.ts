@@ -5,7 +5,7 @@
 const en = {
   'app.title': 'Mission Architect',
   'app.tagline': 'Plan a space mission. Fly it. Learn from it.',
-  'app.disclaimer': 'Made with public NASA data for the NASA Space Apps Challenge 2026. This game is not made by NASA, and NASA has not approved it.',
+  'app.disclaimer': 'Made with public NASA data for the NASA Space Apps Challenge 2026.',
 
   'nav.back': 'Back',
   'nav.home': 'Home',
