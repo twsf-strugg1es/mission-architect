@@ -1,4 +1,4 @@
-import { BookOpen, Database, Rocket, Trophy } from 'lucide-react'
+import { BookOpen, Database, ExternalLink, Rocket, Trophy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ChoiceCard } from '@/components/ChoiceCard'
 import { byId, DESTINATIONS, DIFFICULTIES } from '@/game/data'
@@ -30,6 +30,12 @@ export function HomeScreen() {
           <Button size="lg" variant="outline" onClick={() => setOverlay('data')}>
             <Database aria-hidden data-icon="inline-start" />
             {t('home.data')}
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+          <a href="https://github.com/twsf-strugg1es/mission-architect" target="_blank" rel="noreferrer">
+            <ExternalLink aria-hidden data-icon="inline-start" />
+            GitHub
+          </a>
           </Button>
         </div>
       </div>
